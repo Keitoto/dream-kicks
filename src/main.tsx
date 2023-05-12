@@ -3,10 +3,13 @@ import './index.css';
 import { MantineProvider } from '@mantine/core';
 import ReactDOM from 'react-dom/client';
 
-import App from './App';
+import {
+  RouterProvider,
+} from 'react-router-dom';
+import { router } from '@/pages/router';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <MantineProvider withGlobalStyles withNormalizeCSS>
-    <App />
+    <RouterProvider router={router} />
   </MantineProvider>
 );
