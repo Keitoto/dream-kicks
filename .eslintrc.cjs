@@ -19,8 +19,13 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  ignorePatterns: ["vite.config.ts", ".eslintrc.cjs"],
-  plugins: ['react-hooks', 'sort-keys-custom-order', 'simple-import-sort'],
+  ignorePatterns: ['vite.config.ts', '.eslintrc.cjs', 'tailwind.config.js'],
+  plugins: [
+    'react-hooks',
+    'sort-keys-custom-order',
+    'simple-import-sort',
+    'tailwindcss',
+  ],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'import/prefer-default-export': 'off',
