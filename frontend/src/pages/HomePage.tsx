@@ -1,39 +1,35 @@
+import LoadingBox from '@/components/Layout/LoadingBox';
 import ProductList from '@/components/Layout/Product/ProductList';
 import { Product } from '@/types/Product';
 import { Container } from '@mantine/core';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import useSWR from 'swr';
+import { Helmet } from 'react-helmet-async';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { data, error, isLoading } = useSWR<Product[]>('/api/products', (url) =>
+    axios.get(url).then((res) => res.data)
+  );
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const res: { data: Product[] } = await axios.get('/api/products');
-      setProducts(res.data);
-    };
-    fetchProducts();
-  }, []);
-
-  if (!products) {
-    return <div>Loading...</div>;
-  }
-
-  // const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-  // const { data: products, error, isLoading } = useSWR('http://localhost:5000/api/products', fetcher);
-
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
-  // if (error) {
-  //   return <div>{error.message}</div>;
-  // }
+  if (isLoading)
+    return (
+      <div>
+        <LoadingBox />
+      </div>
+    );
+  if (error) return <div>{error}</div>;
+  if (!data) return <div>No data</div>;
 
   return (
-    <Container>
-      <ProductList products={products} />
-    </Container>
+    <>
+      <Helmet>
+        <title>Dream Kicks</title>
+        <meta name="description" content="Home page for Dream Kicks" />
+      </Helmet>
+      
+      <Container>
+        <ProductList products={data} />
+      </Container>
+    </>
   );
 };
