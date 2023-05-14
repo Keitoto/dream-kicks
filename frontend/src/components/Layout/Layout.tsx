@@ -1,5 +1,6 @@
 import Footer from '@/components/Layout/Footer';
 import { Header } from '@/components/Layout/Header';
+import { AppShell } from '@mantine/core';
 import { FC, ReactNode } from 'react';
 
 type Props = {
@@ -9,9 +10,9 @@ type Props = {
 export const Layout: FC<Props> = ({ children }) => {
   return (
     <>
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      <AppShell header={<Header />} footer={<Footer />}>
+        <main>{children}</main>
+      </AppShell>
     </>
   );
 };
