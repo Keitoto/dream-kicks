@@ -5,16 +5,19 @@ import ReactDOM from 'react-dom/client';
 
 import { RouterProvider } from 'react-router-dom';
 import { router } from '@/pages/router';
-import axios from 'axios';
 import { HelmetProvider } from 'react-helmet-async';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-axios.defaults.baseURL =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '/';
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <HelmetProvider>
     <MantineProvider withGlobalStyles withNormalizeCSS>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </MantineProvider>
   </HelmetProvider>
 );

@@ -1,15 +1,12 @@
 import LoadingBox from '@/components/LoadingBox';
 import ProductList from '@/components/Product/ProductList';
-import { Product } from '@/types/Product';
 import { Container } from '@mantine/core';
-import axios from 'axios';
-import useSWR from 'swr';
 import { Helmet } from 'react-helmet-async';
+import { useGetProductsQuery } from '@/hooks/productHooks';
+import MessageBox from '@/components/MessageBox';
 
 export const HomePage = () => {
-  const { data, error, isLoading } = useSWR<Product[]>('/api/products', (url) =>
-    axios.get(url).then((res) => res.data)
-  );
+  const { data: products, error, isLoading } = useGetProductsQuery();
 
   if (isLoading)
     return (
@@ -17,8 +14,8 @@ export const HomePage = () => {
         <LoadingBox />
       </div>
     );
-  if (error) return <div>{error}</div>;
-  if (!data) return <div>No data</div>;
+  if (error) return <MessageBox>Something went wrong</MessageBox>;
+  if (!products) return <MessageBox>No products found</MessageBox>;
 
   return (
     <>
@@ -28,7 +25,7 @@ export const HomePage = () => {
       </Helmet>
 
       <Container>
-        <ProductList products={data} />
+        <ProductList products={products} />
       </Container>
     </>
   );
