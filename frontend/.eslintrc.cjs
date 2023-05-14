@@ -22,6 +22,7 @@ module.exports = {
   ignorePatterns: ['vite.config.ts', '.eslintrc.cjs', 'tailwind.config.js'],
   plugins: [
     'react-hooks',
+    '@tanstack/query',
     'sort-keys-custom-order',
     'simple-import-sort',
     'tailwindcss',
