@@ -12,7 +12,6 @@ export const products: Product[] = [
     numInStock: 10,
     numReviews: 12,
     price: 89.99,
-    rating: 4.5,
     slug: 'airpods-wireless-bluetooth-headphones',
   },
   {
@@ -26,7 +25,6 @@ export const products: Product[] = [
     numInStock: 7,
     numReviews: 8,
     price: 599.99,
-    rating: 4.0,
     slug: 'iphone-11-pro-256gb-memory',
   },
   {
@@ -40,7 +38,6 @@ export const products: Product[] = [
     numInStock: 10,
     numReviews: 12,
     price: 89.99,
-    rating: 4.5,
     slug: 'airpods-wireless-bluetooth-headphones',
   },
   {
@@ -54,7 +51,6 @@ export const products: Product[] = [
     numInStock: 7,
     numReviews: 8,
     price: 599.99,
-    rating: 4.0,
     slug: 'iphone-11-pro-256gb-memory',
   },
 ];

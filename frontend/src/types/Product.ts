@@ -8,6 +8,5 @@ export type Product = {
   numInStock: number;
   numReviews: number;
   price: number;
-  rating: number;
   slug: string;
 };
