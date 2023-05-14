@@ -9,7 +9,6 @@ const ProductSchema = new Schema<Product>({
   description: { type: String, required: true },
   image: { type: String, required: true },
   numInStock: { type: Number, required: true },
-  numReviews: { type: Number, required: true },
   price: { type: Number, required: true },
   slug: { type: String, required: true },
 });
