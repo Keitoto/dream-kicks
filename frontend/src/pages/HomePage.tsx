@@ -1,5 +1,5 @@
-import LoadingBox from '@/components/Layout/LoadingBox';
-import ProductList from '@/components/Layout/Product/ProductList';
+import LoadingBox from '@/components/LoadingBox';
+import ProductList from '@/components/Product/ProductList';
 import { Product } from '@/types/Product';
 import { Container } from '@mantine/core';
 import axios from 'axios';
@@ -26,7 +26,7 @@ export const HomePage = () => {
         <title>Dream Kicks</title>
         <meta name="description" content="Home page for Dream Kicks" />
       </Helmet>
-      
+
       <Container>
         <ProductList products={data} />
       </Container>

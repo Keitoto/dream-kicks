@@ -1,4 +1,4 @@
-import ProductCard from '@/components/Layout/Product/ProductCard';
+import ProductCard from '@/components/Product/ProductCard';
 import { Product } from '@/types/Product';
 import { SimpleGrid } from '@mantine/core';
 import { FC } from 'react';
