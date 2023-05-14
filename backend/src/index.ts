@@ -10,6 +10,7 @@ dotenv.config();
 
 const app = express();
 const PORT = 5000;
+
 app.use(
   cors({
     credentials: true,
@@ -19,6 +20,9 @@ app.use(
 
 app.get('/api/products', (req: Request, res: Response) => {
   res.json(products);
+});
+app.get('/api/products/:slug', (req: Request, res: Response) => {
+  res.json(products.find((product) => product.slug === req.params.slug));
 });
 
 app.listen(PORT, () => {
