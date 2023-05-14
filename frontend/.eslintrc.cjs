@@ -28,6 +28,8 @@ module.exports = {
     'tailwindcss',
   ],
   rules: {
+    '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/prefer-query-object-syntax': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'import/prefer-default-export': 'off',
     'simple-import-sort/imports': 'error',
