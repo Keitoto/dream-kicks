@@ -21,7 +21,7 @@ export const products: Product[] = [
     description:
       'Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life',
     image: 'https://picsum.photos/id/3/420/300',
-    numInStock: 7,
+    numInStock: 0,
     price: 599.99,
     slug: 'iphone-11-pro-256gb-memory',
   },
