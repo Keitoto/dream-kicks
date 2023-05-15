@@ -1,8 +1,7 @@
 export type User = {
-  id?: string;
   name: string;
+  _id?: string;
   email: string;
   isAdmin: boolean;
   password: string;
-  // token: string;
 };
