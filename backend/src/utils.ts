@@ -1,3 +1,4 @@
+import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { User } from './types/User';
@@ -16,4 +17,26 @@ export const generateToken = (user: User) => {
       expiresIn: '30d',
     }
   );
+};
+
+// isAuth is a middleware function that checks if the user is authenticated.
+export const isAuth = (req: Request, res: Response, next: NextFunction) => {
+  const { authorization } = req.headers;
+  if (authorization) {
+    // Bearer xxx => xxx
+    const token = authorization.slice(7, authorization.length);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-param-reassign
+    req.user = decoded as {
+      // eslint-disable-next-line no-underscore-dangle
+      name: string;
+      _id: string;
+      email: string;
+      isAdmin: boolean;
+      token: string;
+    };
+    next();
+  } else {
+    res.status(401).send({ message: 'Invalid Token' });
+  }
 };
