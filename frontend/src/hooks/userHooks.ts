@@ -20,7 +20,7 @@ export const useSignInMutation = () =>
       ).data,
   });
 
-export const useSignupMutation = () =>
+export const useSignUpMutation = () =>
   useMutation({
     mutationFn: async ({
       name,

@@ -22,8 +22,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { signIn } = userSlice.actions;
-export const { signOut } = userSlice.actions;
+export const { signIn, signOut } = userSlice.actions;
 
 export const selectUserInfo = (state: RootState) => state.userInfo;
 

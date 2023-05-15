@@ -8,6 +8,7 @@ import App from '@/App';
 import { CartPage } from '@/pages/CartPage';
 import { HomePage } from '@/pages/HomePage';
 import { ProductPage } from '@/pages/ProductPage';
+import { SignUpPage } from '@/pages/SignUpPage';
 import { SignInPage } from '@/pages/SigninPage';
 
 export const router = createBrowserRouter(
@@ -17,6 +18,7 @@ export const router = createBrowserRouter(
       <Route path="product/:slug" element={<ProductPage />} />
       <Route path="cart" element={<CartPage />} />
       <Route path="signin" element={<SignInPage />} />
+      <Route path="signup" element={<SignUpPage />} />
     </Route>
   )
 );
