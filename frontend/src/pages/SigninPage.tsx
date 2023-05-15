@@ -1,12 +1,15 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
-import { Button, TextInput, Title, Container } from '@mantine/core';
+import { toast } from 'react-toastify';
+import { Button, TextInput, Title, Container, Group } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useSignInMutation } from '../hooks/userHooks';
-import { selectUserInfo, signIn } from '@/store/userSlice';
+
 import { useAppDispatch, useAppSelector } from '@/store';
+import { selectUserInfo, signIn } from '@/store/userSlice';
+
+import { useSignInMutation } from '../hooks/userHooks';
 
 export const SignInPage = () => {
   const navigate = useNavigate();
@@ -21,7 +24,7 @@ export const SignInPage = () => {
     },
   });
 
-  const user = useAppSelector(selectUserInfo);
+  const userInfo = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
 
   // react-query mutation
@@ -42,10 +45,10 @@ export const SignInPage = () => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (userInfo) {
       navigate(redirect);
     }
-  }, [user, navigate, redirect]);
+  }, [userInfo, navigate, redirect]);
 
   return (
     <>
@@ -72,6 +75,12 @@ export const SignInPage = () => {
             Submit
           </Button>
         </form>
+        <Group mt='lg'>
+          Not a member?{' '}
+          <Link to="/signup" style={{ color: 'blue' }}>
+            Sign up
+          </Link>
+        </Group>
       </Container>
     </>
   );
