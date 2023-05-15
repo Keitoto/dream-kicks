@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 
 import { productRouter } from './router/productRouter';
 import { seedRouter } from './router/seedRouter';
+import { userRouter } from './router/userRouter';
 
 dotenv.config();
 const PORT = 5000;
@@ -18,6 +19,10 @@ mongoose
 
 const app = express();
 
+// Middleware for parsing JSON and urlencoded data so that we can access req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(
   cors({
     credentials: true,
@@ -26,6 +31,7 @@ app.use(
 );
 
 app.use('/api/products', productRouter);
+app.use('/api/users', userRouter);
 app.use('/api/seed', seedRouter);
 
 app.listen(PORT, () => {

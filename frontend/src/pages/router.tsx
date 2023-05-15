@@ -2,6 +2,7 @@ import App from '@/App';
 import { CartPage } from '@/pages/CartPage';
 import { HomePage } from '@/pages/HomePage';
 import { ProductPage } from '@/pages/ProductPage';
+import { SigninPage } from '@/pages/SigninPage';
 import {
   Route,
   createBrowserRouter,
@@ -14,6 +15,7 @@ export const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="product/:slug" element={<ProductPage />} />
       <Route path="cart" element={<CartPage />} />
+      <Route path="signin" element={<SigninPage />} />
     </Route>
   )
 );
