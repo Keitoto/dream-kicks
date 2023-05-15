@@ -7,7 +7,7 @@ import { Title, TextInput, Button, Container } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 import { useAppDispatch, useAppSelector } from '@/store';
-import { selectUserInfo, signIn, signUp } from '@/store/userSlice';
+import { selectUserInfo, signIn } from '@/store/userSlice';
 
 import { useSignUpMutation } from '../hooks/userHooks';
 
