@@ -8,9 +8,7 @@ const App = () => {
   return (
     <>
       <AppShell header={<Header />} footer={<Footer />}>
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
       </AppShell>
       <ToastContainer position="bottom-center" limit={1} />
     </>
