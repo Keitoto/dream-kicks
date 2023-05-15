@@ -7,6 +7,8 @@ import {
 import App from '@/App';
 import { CartPage } from '@/pages/CartPage';
 import { HomePage } from '@/pages/HomePage';
+import { PaymentMethodPage } from '@/pages/PaymentMethodPage';
+import { PlaceOrderPage } from '@/pages/PlaceOrderPage';
 import { ProductPage } from '@/pages/ProductPage';
 import { ShippingAddressPage } from '@/pages/ShippingAddressPage';
 import { SignUpPage } from '@/pages/SignUpPage';
@@ -21,6 +23,8 @@ export const router = createBrowserRouter(
       <Route path="signin" element={<SignInPage />} />
       <Route path="signup" element={<SignUpPage />} />
       <Route path="shipping" element={<ShippingAddressPage />} />
+      <Route path="payment" element={<PaymentMethodPage />} />
+      <Route path="placeorder" element={<PlaceOrderPage />} />
     </Route>
   )
 );
