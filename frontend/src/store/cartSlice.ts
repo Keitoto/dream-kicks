@@ -1,6 +1,7 @@
 import { RootState } from '@/store';
 import { Cart, CartItem, PaymentMethod } from '@/types/Cart';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { signout } from '@/store/userSlice';
 
 const initialState: Cart = {
   cartItems: localStorage.getItem('cartItems')
@@ -37,12 +38,30 @@ const cartSlice = createSlice({
     removeItemFromCart(state, action: PayloadAction<string>) {
       state.cartItems = state.cartItems.filter((i) => i._id !== action.payload);
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
-    }
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(signout, (state) => {
+      state = {
+        cartItems: [],
+        shippingAddress: {
+          fullName: '',
+          address: '',
+          city: '',
+          postalCode: '',
+          country: '',
+        },
+        paymentMethod: 'PayPal',
+        itemsPrice: 0,
+        shippingPrice: 0,
+        taxPrice: 0,
+        totalPrice: 0,
+      };
+    });
   },
 });
 
-export const { addItemToCart } = cartSlice.actions;
-export const { removeItemFromCart } = cartSlice.actions;
+export const { addItemToCart, removeItemFromCart } = cartSlice.actions;
 
 export const selectCartItems = (state: RootState) => state.cart.cartItems;
 
