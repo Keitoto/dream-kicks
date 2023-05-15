@@ -2,10 +2,9 @@ import { Product } from '@/types/Product';
 
 export type CartItem = Pick<
   Product,
-  'name' | 'price' | 'numInStock' | 'slug'
+  'name' | 'price' | 'numInStock' | 'slug' | '_id'
 > & {
   image: Product['image'] | undefined;
-  _id: string;
   quantity: number;
 };
 
