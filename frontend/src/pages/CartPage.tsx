@@ -1,11 +1,8 @@
-import MessageBox from '@/components/MessageBox';
-import { useAppDispatch, useAppSelector } from '@/store';
-import {
-  addItemToCart,
-  removeItemFromCart,
-  selectCartItems,
-} from '@/store/cartSlice';
-import { CartItem } from '@/types/Cart';
+import { Helmet } from 'react-helmet-async';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { CircleMinus, CirclePlus } from 'tabler-icons-react';
+
 import {
   Container,
   Flex,
@@ -20,10 +17,14 @@ import {
   AspectRatio,
   SimpleGrid,
 } from '@mantine/core';
-import { Helmet } from 'react-helmet-async';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { CircleMinus, CirclePlus } from 'tabler-icons-react';
+import MessageBox from '@/components/MessageBox';
+import { useAppDispatch, useAppSelector } from '@/store';
+import {
+  addItemToCart,
+  removeItemFromCart,
+  selectCartItems,
+} from '@/store/cartSlice';
+import { CartItem } from '@/types/Cart';
 
 export const CartPage = () => {
   const cartItems = useAppSelector(selectCartItems);

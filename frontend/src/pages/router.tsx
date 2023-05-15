@@ -1,13 +1,14 @@
-import App from '@/App';
-import { CartPage } from '@/pages/CartPage';
-import { HomePage } from '@/pages/HomePage';
-import { ProductPage } from '@/pages/ProductPage';
-import { SigninPage } from '@/pages/SigninPage';
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+
+import App from '@/App';
+import { CartPage } from '@/pages/CartPage';
+import { HomePage } from '@/pages/HomePage';
+import { ProductPage } from '@/pages/ProductPage';
+import { SigninPage } from '@/pages/SigninPage';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

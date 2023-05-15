@@ -24,7 +24,7 @@ module.exports = {
     'react-hooks',
     '@tanstack/query',
     'sort-keys-custom-order',
-    'simple-import-sort',
+    // 'simple-import-sort',
     'tailwindcss',
   ],
   rules: {
@@ -32,7 +32,7 @@ module.exports = {
     '@tanstack/query/prefer-query-object-syntax': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'import/prefer-default-export': 'off',
-    'simple-import-sort/imports': 'error',
+    // 'simple-import-sort/imports': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 'off',
     'react/function-component-definition': [

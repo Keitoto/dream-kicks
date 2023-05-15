@@ -1,6 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '@/components/apiClient';
 import { Product } from '@/types/Product';
-import { useQuery } from '@tanstack/react-query';
 
 export const useGetProductsQuery = () =>
   useQuery({

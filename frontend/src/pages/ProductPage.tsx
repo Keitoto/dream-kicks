@@ -1,4 +1,3 @@
-import { useGetProductDetailsBySlugQuery } from '@/hooks/productHooks';
 import {
   Badge,
   Button,
@@ -10,6 +9,7 @@ import {
 } from '@mantine/core';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { useGetProductDetailsBySlugQuery } from '@/hooks/productHooks';
 
 export const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();

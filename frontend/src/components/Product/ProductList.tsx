@@ -1,7 +1,7 @@
-import ProductCard from '@/components/Product/ProductCard';
-import { Product } from '@/types/Product';
 import { SimpleGrid } from '@mantine/core';
 import { FC } from 'react';
+import ProductCard from '@/components/Product/ProductCard';
+import { Product } from '@/types/Product';
 
 type Props = {
   products: Product[];

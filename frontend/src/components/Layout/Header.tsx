@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
+import { Badge, Button, Container, Flex, Menu } from '@mantine/core';
+
 import { useAppDispatch, useAppSelector } from '@/store';
 import { selectCartItems } from '@/store/cartSlice';
 import { selectUserInfo, signout } from '@/store/userSlice';
-import { Badge, Button, Container, Flex, Menu } from '@mantine/core';
-import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const cartItems = useAppSelector(selectCartItems);

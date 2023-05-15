@@ -1,18 +1,18 @@
-import { useAppDispatch, useAppSelector } from '@/store';
-import { selectUserInfo, signin } from '@/store/userSlice';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSigninMutation } from '../hooks/userHooks';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import { Button, TextInput, Title, Container } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useSigninMutation } from '../hooks/userHooks';
+import { selectUserInfo, signin } from '@/store/userSlice';
+import { useAppDispatch, useAppSelector } from '@/store';
 
 export const SigninPage = () => {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectUrl = new URLSearchParams(search).get('redirect');
-  const redirect = redirectUrl ? redirectUrl : '/';
+  const redirect = redirectUrl || '/';
 
   const form = useForm({
     initialValues: {

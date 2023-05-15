@@ -1,6 +1,7 @@
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
 import { RootState } from '@/store';
 import { UserInfo } from '@/types/UserInfo';
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const initialState: UserInfo | null = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo')!)
@@ -8,7 +9,7 @@ const initialState: UserInfo | null = localStorage.getItem('userInfo')
 
 const userSlice = createSlice({
   name: 'userInfo',
-  initialState: initialState,
+  initialState,
   reducers: {
     signin(state, action: PayloadAction<UserInfo>) {
       state = action.payload;

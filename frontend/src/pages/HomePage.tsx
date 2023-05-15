@@ -1,7 +1,7 @@
-import LoadingBox from '@/components/LoadingBox';
-import ProductList from '@/components/Product/ProductList';
 import { Container } from '@mantine/core';
 import { Helmet } from 'react-helmet-async';
+import LoadingBox from '@/components/LoadingBox';
+import ProductList from '@/components/Product/ProductList';
 import { useGetProductsQuery } from '@/hooks/productHooks';
 import MessageBox from '@/components/MessageBox';
 

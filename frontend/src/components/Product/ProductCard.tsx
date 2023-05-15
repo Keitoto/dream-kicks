@@ -1,8 +1,3 @@
-import { convertProductToCartItem } from '@/helpers';
-import { useAppDispatch, useAppSelector } from '@/store';
-import { addItemToCart, selectCartItems } from '@/store/cartSlice';
-import { CartItem } from '@/types/Cart';
-import { Product } from '@/types/Product';
 import {
   Card,
   AspectRatio,
@@ -17,6 +12,11 @@ import {
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { convertProductToCartItem } from '@/helpers';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { addItemToCart, selectCartItems } from '@/store/cartSlice';
+import { CartItem } from '@/types/Cart';
+import { Product } from '@/types/Product';
 
 type Props = {
   product: Product;

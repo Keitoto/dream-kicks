@@ -1,0 +1,32 @@
+{
+  "singleQuote": true,
+  "importOrder": [
+    "\breact\b",
+    "^react-dom",
+    "^react-router-dom",
+    "^react-redux",
+    "^@reduxjs",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "^@tanstack",
+    "^@mantine",
+    "",
+    "^@components/(.*)$",
+    "",
+    "^@helpers/(.*)$",
+    "",
+    "^@hooks/(.*)$",
+    "",
+    "^@pages/(.*)$",
+    "",
+    "^@store/(.*)$",
+    "",
+    "^@types/(.*)$",
+    "",
+    "^[@/]",
+    "",
+    "^[./]"
+  ],
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+  "importOrderTypeScriptVersion": "5.0.0"
+}

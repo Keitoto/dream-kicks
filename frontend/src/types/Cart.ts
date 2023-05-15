@@ -9,20 +9,20 @@ export type CartItem = Pick<
 };
 
 export type ShippingAddress = {
-  fullName: string;
   address: string;
   city: string;
-  postalCode: string;
   country: string;
+  fullName: string;
+  postalCode: string;
 };
 
 export type PaymentMethod = 'PayPal' | 'Stripe';
 
 export type Cart = {
   cartItems: CartItem[];
-  shippingAddress: ShippingAddress;
-  paymentMethod: PaymentMethod;
   itemsPrice: number;
+  paymentMethod: PaymentMethod;
+  shippingAddress: ShippingAddress;
   shippingPrice: number;
   taxPrice: number;
   totalPrice: number;

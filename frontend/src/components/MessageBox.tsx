@@ -1,5 +1,5 @@
-import { Alert } from '@mantine/core';
 import { FC, ReactNode } from 'react';
+import { Alert } from '@mantine/core';
 
 const MessageBox: FC<{ children: ReactNode }> = ({ children }) => {
   return (
