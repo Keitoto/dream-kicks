@@ -1,4 +1,4 @@
-import Footer from '@/components/Layout/Footer';
+import { Footer } from '@/components/Layout/Footer';
 import { Header } from '@/components/Layout/Header';
 import { AppShell } from '@mantine/core';
 import { FC, ReactNode } from 'react';
