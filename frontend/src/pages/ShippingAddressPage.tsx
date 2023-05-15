@@ -7,7 +7,7 @@ import { useForm } from '@mantine/form';
 
 import { CheckoutSteps } from '@/components/CheckoutSteps';
 import { useAppDispatch, useAppSelector } from '@/store';
-import { selectShippingAddress, setShippingAddress } from '@/store/cartSlice';
+import { selectShippingAddress, saveShippingAddress } from '@/store/cartSlice';
 import { selectUserInfo } from '@/store/userSlice';
 
 export const ShippingAddressPage = () => {
@@ -36,7 +36,7 @@ export const ShippingAddressPage = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(setShippingAddress(shippingAddressForm.values));
+    dispatch(saveShippingAddress(shippingAddressForm.values));
     localStorage.setItem(
       'shippingAddress',
       JSON.stringify(shippingAddressForm.values)

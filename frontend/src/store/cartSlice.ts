@@ -40,14 +40,14 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((i) => i._id !== action.payload);
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
-    setShippingAddress(state, action: PayloadAction<ShippingAddress>) {
+    saveShippingAddress(state, action: PayloadAction<ShippingAddress>) {
       state.shippingAddress = action.payload;
       localStorage.setItem(
         'shippingAddress',
         JSON.stringify(state.shippingAddress)
       );
     },
-    setPaymentMethod(state, action: PayloadAction<PaymentMethod>) {
+    savePaymentMethod(state, action: PayloadAction<PaymentMethod>) {
       state.paymentMethod = action.payload;
       localStorage.setItem('paymentMethod', state.paymentMethod);
     },
@@ -73,7 +73,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItemToCart, removeItemFromCart, setShippingAddress, setPaymentMethod } =
+export const { addItemToCart, removeItemFromCart, saveShippingAddress, savePaymentMethod } =
   cartSlice.actions;
 
 export const selectCartItems = (state: RootState) => state.cart.cartItems;
