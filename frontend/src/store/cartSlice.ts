@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '@/store';
 import { signOut } from '@/store/userSlice';
-import { Cart, CartItem, PaymentMethod } from '@/types/Cart';
+import { Cart, CartItem, PaymentMethod, ShippingAddress } from '@/types/Cart';
 
 const initialState: Cart = {
   cartItems: localStorage.getItem('cartItems')
@@ -40,6 +40,17 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((i) => i._id !== action.payload);
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
+    setShippingAddress(state, action: PayloadAction<ShippingAddress>) {
+      state.shippingAddress = action.payload;
+      localStorage.setItem(
+        'shippingAddress',
+        JSON.stringify(state.shippingAddress)
+      );
+    },
+    setPaymentMethod(state, action: PayloadAction<PaymentMethod>) {
+      state.paymentMethod = action.payload;
+      localStorage.setItem('paymentMethod', state.paymentMethod);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(signOut, (state) => {
@@ -62,8 +73,13 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItemToCart, removeItemFromCart } = cartSlice.actions;
+export const { addItemToCart, removeItemFromCart, setShippingAddress, setPaymentMethod } =
+  cartSlice.actions;
 
 export const selectCartItems = (state: RootState) => state.cart.cartItems;
+export const selectShippingAddress = (state: RootState) =>
+  state.cart.shippingAddress;
+export const selectPaymentMethod = (state: RootState) =>
+  state.cart.paymentMethod;
 
 export const cartReducer = cartSlice.reducer;
