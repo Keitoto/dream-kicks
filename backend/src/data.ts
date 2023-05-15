@@ -1,8 +1,10 @@
+import bcrypt from 'bcryptjs';
+
 import { Product } from './types/Product';
+import { User } from './types/User';
 
 export const products: Product[] = [
   {
-    id: '1',
     name: 'Airpods Wireless Bluetooth Headphones',
     brand: 'Apple',
     category: 'Electronics',
@@ -14,7 +16,6 @@ export const products: Product[] = [
     slug: 'airpods-wireless-bluetooth-headphones',
   },
   {
-    id: '2',
     name: 'iPhone 11 Pro 256GB Memory',
     brand: 'Apple',
     category: 'Electronics',
@@ -26,7 +27,6 @@ export const products: Product[] = [
     slug: 'iphone-11-pro-256gb-memory',
   },
   {
-    id: '3',
     name: 'Airpods Wireless Bluetooth Headphones',
     brand: 'Apple',
     category: 'Electronics',
@@ -38,7 +38,6 @@ export const products: Product[] = [
     slug: 'airpods-wireless-bluetooth-headphones',
   },
   {
-    id: '4',
     name: 'iPhone 11 Pro 256GB Memory',
     brand: 'Apple',
     category: 'Electronics',
@@ -48,5 +47,20 @@ export const products: Product[] = [
     numInStock: 7,
     price: 599.99,
     slug: 'iphone-11-pro-256gb-memory',
+  },
+];
+
+export const users: User[] = [
+  {
+    name: 'Admin User',
+    email: 'admin@example.com',
+    isAdmin: true,
+    password: bcrypt.hashSync('123456'),
+  },
+  {
+    name: 'Customer User',
+    email: 'customer@example.com',
+    isAdmin: false,
+    password: bcrypt.hashSync('123456'),
   },
 ];
