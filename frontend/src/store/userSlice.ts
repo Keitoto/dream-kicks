@@ -11,19 +11,19 @@ const userSlice = createSlice({
   name: 'userInfo',
   initialState,
   reducers: {
-    signin(state, action: PayloadAction<UserInfo>) {
+    signIn(state, action: PayloadAction<UserInfo>) {
       state = action.payload;
       localStorage.setItem('userInfo', JSON.stringify(state));
     },
-    signout(state) {
+    signOut(state) {
       state = null;
       localStorage.removeItem('userInfo');
     },
   },
 });
 
-export const { signin } = userSlice.actions;
-export const { signout } = userSlice.actions;
+export const { signIn } = userSlice.actions;
+export const { signOut } = userSlice.actions;
 
 export const selectUserInfo = (state: RootState) => state.userInfo;
 

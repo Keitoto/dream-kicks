@@ -3,15 +3,15 @@ import { Badge, Button, Container, Flex, Menu } from '@mantine/core';
 
 import { useAppDispatch, useAppSelector } from '@/store';
 import { selectCartItems } from '@/store/cartSlice';
-import { selectUserInfo, signout } from '@/store/userSlice';
+import { selectUserInfo, signOut } from '@/store/userSlice';
 
 export const Header = () => {
   const cartItems = useAppSelector(selectCartItems);
   const userInfo = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
 
-  const signoutHandler = () => {
-    dispatch(signout());
+  const signOutHandler = () => {
+    dispatch(signOut());
     localStorage.removeItem('userInfo');
     localStorage.removeItem('cartItems');
     localStorage.removeItem('shippingAddress');
@@ -40,7 +40,7 @@ export const Header = () => {
                 <Menu.Dropdown>
                   <Menu.Item>
                     <Link to="/profile">Profile</Link>
-                    <Link to="/signout" onClick={signoutHandler}>
+                    <Link to="/signout" onClick={signOutHandler}>
                       Sign out
                     </Link>
                   </Menu.Item>

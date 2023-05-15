@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '@/store';
-import { signout } from '@/store/userSlice';
+import { signOut } from '@/store/userSlice';
 import { Cart, CartItem, PaymentMethod } from '@/types/Cart';
 
 const initialState: Cart = {
@@ -42,7 +42,7 @@ const cartSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(signout, (state) => {
+    builder.addCase(signOut, (state) => {
       state = {
         cartItems: [],
         shippingAddress: {

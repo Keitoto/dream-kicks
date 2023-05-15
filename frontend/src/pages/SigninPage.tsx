@@ -4,11 +4,11 @@ import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import { Button, TextInput, Title, Container } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useSigninMutation } from '../hooks/userHooks';
-import { selectUserInfo, signin } from '@/store/userSlice';
+import { useSignInMutation } from '../hooks/userHooks';
+import { selectUserInfo, signIn } from '@/store/userSlice';
 import { useAppDispatch, useAppSelector } from '@/store';
 
-export const SigninPage = () => {
+export const SignInPage = () => {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectUrl = new URLSearchParams(search).get('redirect');
@@ -25,13 +25,13 @@ export const SigninPage = () => {
   const dispatch = useAppDispatch();
 
   // react-query mutation
-  const { mutateAsync: signinMutation, isLoading } = useSigninMutation();
+  const { mutateAsync: signInMutation, isLoading } = useSignInMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const userInfo = await signinMutation(form.values);
-      dispatch(signin(userInfo));
+      const userInfo = await signInMutation(form.values);
+      dispatch(signIn(userInfo));
       localStorage.setItem('userInfo', JSON.stringify(userInfo));
       navigate(redirect);
     } catch (error) {
