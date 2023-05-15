@@ -1,4 +1,5 @@
 import App from '@/App';
+import { CartPage } from '@/pages/CartPage';
 import { HomePage } from '@/pages/HomePage';
 import { ProductPage } from '@/pages/ProductPage';
 import {
@@ -12,6 +13,7 @@ export const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
       <Route path="product/:slug" element={<ProductPage />} />
+      <Route path="cart" element={<CartPage />} />
     </Route>
   )
 );
