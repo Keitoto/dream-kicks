@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
+import { orderRouter } from './router/orderRouter';
 import { productRouter } from './router/productRouter';
 import { seedRouter } from './router/seedRouter';
 import { userRouter } from './router/userRouter';
@@ -32,6 +33,7 @@ app.use(
 
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
+app.use('/api/order', orderRouter);
 app.use('/api/seed', seedRouter);
 
 app.listen(PORT, () => {
