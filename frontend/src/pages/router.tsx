@@ -10,9 +10,10 @@ import { HomePage } from '@/pages/HomePage';
 import { PaymentMethodPage } from '@/pages/PaymentMethodPage';
 import { PlaceOrderPage } from '@/pages/PlaceOrderPage';
 import { ProductPage } from '@/pages/ProductPage';
+import { ProtectedRoute } from '@/pages/ProtectedRoute';
 import { ShippingAddressPage } from '@/pages/ShippingAddressPage';
+import { SignInPage } from '@/pages/SignInPage';
 import { SignUpPage } from '@/pages/SignUpPage';
-import { SignInPage } from '@/pages/SigninPage';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,9 +23,11 @@ export const router = createBrowserRouter(
       <Route path="cart" element={<CartPage />} />
       <Route path="signin" element={<SignInPage />} />
       <Route path="signup" element={<SignUpPage />} />
-      <Route path="shipping" element={<ShippingAddressPage />} />
-      <Route path="payment" element={<PaymentMethodPage />} />
-      <Route path="placeorder" element={<PlaceOrderPage />} />
+      <Route path="" element={<ProtectedRoute />}>
+        <Route path="shipping" element={<ShippingAddressPage />} />
+        <Route path="payment" element={<PaymentMethodPage />} />
+        <Route path="placeorder" element={<PlaceOrderPage />} />
+      </Route>
     </Route>
   )
 );
