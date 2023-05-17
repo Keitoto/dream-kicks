@@ -6,7 +6,6 @@ import { User } from './types/User';
 export const generateToken = (user: User) => {
   return jwt.sign(
     {
-      // eslint-disable-next-line no-underscore-dangle
       _id: user._id,
       name: user.name,
       email: user.email,
@@ -28,7 +27,6 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-param-reassign
     req.user = decoded as {
-      // eslint-disable-next-line no-underscore-dangle
       name: string;
       _id: string;
       email: string;

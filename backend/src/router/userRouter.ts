@@ -14,7 +14,6 @@ userRouter.post(
     const user = await UserModel.findOne({ email: req.body.email });
     if (user && bcrypt.compareSync(req.body.password, user.password)) {
       res.send({
-        // eslint-disable-next-line no-underscore-dangle
         _id: user._id,
         name: user.name,
         email: user.email,
@@ -37,7 +36,6 @@ userRouter.post(
       password: bcrypt.hashSync(req.body.password),
     });
     res.send({
-      // eslint-disable-next-line no-underscore-dangle
       _id: createdUser._id,
       name: createdUser.name,
       email: createdUser.email,
