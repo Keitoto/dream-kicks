@@ -51,6 +51,21 @@ const cartSlice = createSlice({
       state.paymentMethod = action.payload;
       localStorage.setItem('paymentMethod', state.paymentMethod);
     },
+    savePrices(
+      state,
+      action: PayloadAction<
+        Pick<Cart, 'itemsPrice' | 'shippingPrice' | 'taxPrice' | 'totalPrice'>
+      >
+    ) {
+      state.itemsPrice = action.payload.itemsPrice;
+      state.shippingPrice = action.payload.shippingPrice;
+      state.taxPrice = action.payload.taxPrice;
+      state.totalPrice = action.payload.totalPrice;
+    },
+    clearCart(state) {
+      state.cartItems = [];
+      localStorage.removeItem('cartItems');
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(signOut, (state) => {
@@ -73,9 +88,16 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItemToCart, removeItemFromCart, saveShippingAddress, savePaymentMethod } =
-  cartSlice.actions;
+export const {
+  addItemToCart,
+  removeItemFromCart,
+  saveShippingAddress,
+  savePaymentMethod,
+  savePrices,
+  clearCart,
+} = cartSlice.actions;
 
+export const selectCart = (state: RootState) => state.cart;
 export const selectCartItems = (state: RootState) => state.cart.cartItems;
 export const selectShippingAddress = (state: RootState) =>
   state.cart.shippingAddress;
