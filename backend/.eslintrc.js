@@ -29,6 +29,7 @@ module.exports = {
         ignorePropertyModificationsFor: ['state'],
       },
     ],
+    'no-underscore-dangle': ['allow', ['_id']],
     'sort-keys-custom-order/type-keys': [
       'error',
       { orderedKeys: ['id', 'name', 'title'] },
