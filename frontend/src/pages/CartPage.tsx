@@ -10,12 +10,9 @@ import {
   List,
   Title,
   UnstyledButton,
-  Image,
   Button,
   Card,
-  Divider,
   AspectRatio,
-  SimpleGrid,
 } from '@mantine/core';
 import MessageBox from '@/components/MessageBox';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -70,7 +67,7 @@ export const CartPage = () => {
                         <Grid align="center">
                           <Grid.Col span={6}>
                             <AspectRatio ratio={1 / 1}>
-                              <Image src={item.image} alt={item.name} />
+                              <img src={item.image} alt={item.name} />
                             </AspectRatio>
                           </Grid.Col>
                           <Grid.Col span={6}>
