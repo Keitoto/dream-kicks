@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 
 import { Product } from './types/Product';
 import { User } from './types/User';
+import { Order } from './types/Order';
 
 export const products: Product[] = [
   {
@@ -64,3 +65,49 @@ export const users: User[] = [
     password: bcrypt.hashSync('123456'),
   },
 ];
+
+// export const orders: Order[] = [
+//   {
+//     deliveredAt: new Date(),
+//     isDelivered: true,
+//     isPaid: true,
+//     paidAt: new Date(),
+//     paymentResult: {
+//       emailAddress: 'admin@example.com',
+//       paymentId: 'PAYID-LRJ4Q6QJ5S123456789',
+//       status: 'COMPLETED',
+//       updateTime: '2020-10-05T21:42:02Z',
+//     },
+//     user: users[0],
+//     orderItems: [
+//       {
+//         name: products[0].name,
+//         image: products[0].image,
+//         price: products[0].price,
+//         product: products[0],
+//         quantity: 2,
+//       },
+//       {
+//         name: products[1].name,
+//         image: products[1].image,
+//         price: products[1].price,
+//         product: products[1],
+//         quantity: 1,
+//       },
+//     ],
+//     shippingAddress: {
+//       fullName: 'John Smith',
+//       address: '1234 Main Street',
+//       city: 'Boston',
+//       country: 'United States',
+//       postalCode: '02101',
+//       lat: 42.35843,
+//       lng: -71.05977,
+//     },
+//     paymentMethod: 'PayPal',
+//     itemsPrice: 689.98,
+//     shippingPrice: 0,
+//     taxPrice: 103.5,
+//     totalPrice: 793.48,
+//   },
+// ];
