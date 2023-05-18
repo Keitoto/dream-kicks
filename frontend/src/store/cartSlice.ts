@@ -28,8 +28,12 @@ const cartSlice = createSlice({
       const newItem = action.payload;
       const existingItem = state.cartItems.find((i) => i._id === newItem._id);
       if (existingItem) {
+        const updatedItem = {
+          ...existingItem,
+          quantity: existingItem.quantity + newItem.quantity,
+        };
         state.cartItems = state.cartItems.map((item) =>
-          item._id === existingItem._id ? newItem : item
+          item._id === existingItem._id ? updatedItem : item
         );
       } else {
         state.cartItems.push(newItem);

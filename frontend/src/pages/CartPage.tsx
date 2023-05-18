@@ -1,8 +1,8 @@
-import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
+
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import { CircleMinus, CirclePlus } from 'tabler-icons-react';
-
 import {
   Container,
   Flex,
@@ -14,6 +14,7 @@ import {
   Card,
   AspectRatio,
 } from '@mantine/core';
+
 import MessageBox from '@/components/MessageBox';
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
@@ -21,16 +22,19 @@ import {
   removeItemFromCart,
   selectCartItems,
 } from '@/store/cartSlice';
+import { selectUserInfo } from '@/store/userSlice';
 import { CartItem } from '@/types/Cart';
 
 export const CartPage = () => {
   const cartItems = useAppSelector(selectCartItems);
+  const userInfo = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const updateCartHandler = (item: CartItem, quantity: number) => {
-    if (item.numInStock < quantity) {
-      toast.error('Sorry. Product is out of stock');
+    const updatedQuantity = item.quantity + quantity;
+    if (item.numInStock < updatedQuantity || updatedQuantity < 1) {
+      // toast.error('Sorry. Product is out of stock');
       return;
     }
     dispatch(addItemToCart({ ...item, quantity }));
@@ -41,7 +45,11 @@ export const CartPage = () => {
   };
 
   const checkoutHandler = () => {
-    navigate('/signin?redirect=shipping');
+    if (!userInfo) {
+      navigate('/signin?redirect=shipping');
+    } else {
+      navigate('/shipping');
+    }
   };
 
   return (
@@ -78,23 +86,26 @@ export const CartPage = () => {
                         </Grid>
                       </Grid.Col>
                       <Grid.Col span={3}>
-                        <Flex justify="center">
-                          <UnstyledButton
-                            onClick={() =>
-                              updateCartHandler(item, item.quantity - 1)
-                            }
+                        <Flex justify="center" align="center">
+                          <Button
+                            p={0}
+                            w={30}
+                            h={30}
+                            onClick={() => updateCartHandler(item, -1)}
                             disabled={item.quantity === 1}
                           >
                             <CircleMinus />
-                          </UnstyledButton>
+                          </Button>
                           {item.quantity}
-                          <UnstyledButton
-                            onClick={() =>
-                              updateCartHandler(item, item.quantity + 1)
-                            }
+                          <Button
+                            p={0}
+                            w={30}
+                            h={30}
+                            onClick={() => updateCartHandler(item, 1)}
+                            disabled={item.quantity === item.numInStock}
                           >
                             <CirclePlus />
-                          </UnstyledButton>
+                          </Button>
                         </Flex>
                       </Grid.Col>
                       <Grid.Col span={2}>${item.price}</Grid.Col>

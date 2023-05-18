@@ -1,3 +1,7 @@
+import { Link } from 'react-router-dom';
+
+import { FC } from 'react';
+import { toast } from 'react-toastify';
 import {
   Card,
   AspectRatio,
@@ -9,9 +13,7 @@ import {
   Flex,
   Box,
 } from '@mantine/core';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
 import { convertProductToCartItem } from '@/helpers';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { addItemToCart, selectCartItems } from '@/store/cartSlice';
@@ -33,7 +35,7 @@ const ProductCard: FC<Props> = ({ product }) => {
       toast.error('Sorry. Product is out of stock');
       return;
     }
-    dispatch(addItemToCart({ ...item, quantity }));
+    dispatch(addItemToCart({ ...item, quantity: 1 }));
     toast.success('Product added to cart');
   };
 
@@ -64,7 +66,9 @@ const ProductCard: FC<Props> = ({ product }) => {
         <Text mt="sm">{product.description}</Text>
         <Box mt="auto">
           <Button
-            onClick={() => addItemToCartHandler(convertProductToCartItem(product))}
+            onClick={() =>
+              addItemToCartHandler(convertProductToCartItem(product))
+            }
             fullWidth
             mt="md"
             className="self-end"
