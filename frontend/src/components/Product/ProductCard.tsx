@@ -68,8 +68,9 @@ const ProductCard: FC<Props> = ({ product }) => {
             fullWidth
             mt="md"
             className="self-end"
+            disabled={product.numInStock === 0}
           >
-            Add to Cart
+            {product.numInStock === 0 ? 'Out of stock' : 'Add to Cart'}
           </Button>
         </Box>
       </Flex>
