@@ -19,6 +19,7 @@ import { OrderSummary } from '@/components/OrderPreview/OrderSummary';
 import { useCreateOrderMutation } from '@/hooks/orderHooks';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { savePrices, selectCart, clearCart } from '@/store/cartSlice';
+import { selectUserInfo } from '@/store/userSlice';
 
 // helper function to round to 2 decimal places
 const round2 = (num: number) => Math.round(num * 100 + Number.EPSILON) / 100;
@@ -28,6 +29,7 @@ export const PlaceOrderPage = () => {
 
   // get redux state
   const cart = useAppSelector(selectCart);
+  const userInfo = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
   const { cartItems, shippingAddress, paymentMethod } = cart;
 
@@ -63,9 +65,11 @@ export const PlaceOrderPage = () => {
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
+        user: userInfo!,
       });
+      if(!data.createdOrder) throw new Error('Order creation failed');
       dispatch(clearCart());
-      navigate(`/order/${data.order._id}`);
+      navigate(`/order/${data.createdOrder._id}`);
     } catch (error) {
       if (error instanceof Error) toast.error(error.message);
     }
@@ -85,9 +89,9 @@ export const PlaceOrderPage = () => {
 
       <CheckoutSteps step1 step2 step3 />
 
-      <Container size="md" mt='xl'>
+      <Container size="md" mt="xl">
         <Title order={1}>Preview Order</Title>
-        <Grid mt='md'>
+        <Grid mt="md">
           <Grid.Col span={8}>
             <Card withBorder>
               <Title order={2} size="h3">
@@ -158,6 +162,13 @@ export const PlaceOrderPage = () => {
             <OrderSummary
               isLoading={isLoading}
               isValid={cartItems.length === 0 && !isLoading}
+              prices={{
+                itemsPrice,
+                shippingPrice,
+                taxPrice,
+                totalPrice,
+              }}
+              canOrder
               handleOrder={handleOrder}
             />
           </Grid.Col>

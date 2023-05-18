@@ -29,11 +29,11 @@ export type PaymentResult = {
 };
 
 export type Order = {
-  _id: string;
+  _id?: string;
   deliveredAt: Date;
   isDelivered: boolean;
   isPaid: boolean;
-  items: CartItem[];
+  orderItems: CartItem[];
   itemsPrice: number;
   paidAt: Date;
   paymentMethod: PaymentMethod;

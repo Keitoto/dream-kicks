@@ -1,9 +1,15 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { apiClient } from '@/components/apiClient';
 import { Order } from '@/types/Order';
 
-type OrderInput = Pick<
+export const useGetOrderDetailsByIdQuery = (id: string) =>
+  useQuery({
+    queryKey: ['orders', id], // key for cache
+    queryFn: async () => (await apiClient.get<Order>(`/api/orders/${id}`)).data,
+  });
+
+type OrderMutationInput = Pick<
   Order,
   | 'paymentMethod'
   | 'shippingAddress'
@@ -12,13 +18,14 @@ type OrderInput = Pick<
   | 'shippingPrice'
   | 'taxPrice'
   | 'totalPrice'
+  | 'user'
 >;
 
 export const useCreateOrderMutation = () =>
   useMutation({
-    mutationFn: async (order: OrderInput) =>
+    mutationFn: async (order: OrderMutationInput) =>
       (
-        await apiClient.post<{ message: string; order: Order }>(
+        await apiClient.post<{ message: string; createdOrder?: Order }>(
           '/api/orders',
           order
         )

@@ -3,7 +3,6 @@ import { model, Schema } from 'mongoose';
 import { User } from '../types/User';
 
 const UserSchema = new Schema<User>({
-  _id: { type: String },
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   isAdmin: { type: Boolean, required: true, default: false },

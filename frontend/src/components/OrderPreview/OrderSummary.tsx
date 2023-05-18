@@ -8,16 +8,23 @@ import { selectCart } from '@/store/cartSlice';
 type Props = {
   isLoading: boolean;
   isValid: boolean;
-  handleOrder: () => void;
+  prices: {
+    itemsPrice: number;
+    taxPrice: number;
+    totalPrice: number;
+    shippingPrice: number;
+  };
+  canOrder?: boolean;
+  handleOrder?: () => void;
 };
 
 export const OrderSummary: FC<Props> = ({
   isValid,
   isLoading,
-  handleOrder,
+  prices: { itemsPrice, taxPrice, totalPrice, shippingPrice },
+  canOrder = false,
+  handleOrder = () => {},
 }) => {
-  const { itemsPrice, taxPrice, totalPrice, shippingPrice } =
-    useAppSelector(selectCart);
   return (
     <Card withBorder>
       <Title order={2} size="h3">
@@ -52,13 +59,21 @@ export const OrderSummary: FC<Props> = ({
           </Grid>
         </List.Item>
       </List>
-      {isLoading ? (
-        <LoadingBox />
-      ) : (
-        <Button type="button" onClick={handleOrder} disabled={isValid} mt="md" fullWidth>
-          Place Order
-        </Button>
-      )}
+      {canOrder ? (
+        isLoading ? (
+          <LoadingBox />
+        ) : (
+          <Button
+            type="button"
+            onClick={handleOrder}
+            disabled={isValid}
+            mt="md"
+            fullWidth
+          >
+            Place Order
+          </Button>
+        )
+      ) : null}
     </Card>
   );
 };

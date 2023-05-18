@@ -1,6 +1,6 @@
 export type User = {
-  name: string;
   _id?: string;
+  name: string;
   email: string;
   isAdmin: boolean;
   password: string;
