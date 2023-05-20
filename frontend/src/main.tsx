@@ -10,6 +10,7 @@ import { MantineProvider } from '@mantine/core';
 
 import { router } from '@/pages/router';
 import { store } from '@/store';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const queryClient = new QueryClient();
 
@@ -17,10 +18,17 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <HelmetProvider>
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <ReduxProvider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <PayPalScriptProvider
+          options={{
+            'client-id': 'sb',
+          }}
+          deferLoading={true}
+        >
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </PayPalScriptProvider>
       </ReduxProvider>
     </MantineProvider>
   </HelmetProvider>

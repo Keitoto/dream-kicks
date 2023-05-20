@@ -7,6 +7,7 @@ import { orderRouter } from './router/orderRouter';
 import { productRouter } from './router/productRouter';
 import { seedRouter } from './router/seedRouter';
 import { userRouter } from './router/userRouter';
+import { keyRouter } from './router/keyRouter';
 
 dotenv.config();
 const PORT = 5000;
@@ -35,6 +36,7 @@ app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/seed', seedRouter);
+app.use('/api/keys', keyRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

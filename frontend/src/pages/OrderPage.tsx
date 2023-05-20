@@ -1,7 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { toast } from 'react-toastify';
 import {
   AspectRatio,
   Card,
@@ -11,14 +12,25 @@ import {
   Text,
   List,
   Title,
+  Button,
 } from '@mantine/core';
 
 import LoadingBox from '@/components/LoadingBox';
 import MessageBox from '@/components/MessageBox';
 import { OrderSummary } from '@/components/OrderPreview/OrderSummary';
-import { useGetOrderDetailsByIdQuery } from '@/hooks/orderHooks';
+import {
+  useGetOrderDetailsByIdQuery,
+  useGetPayPalClientIdQuery,
+  usePayOrderMutation,
+} from '@/hooks/orderHooks';
 import { useAppSelector } from '@/store';
 import { selectUserInfo } from '@/store/userSlice';
+import {
+  PayPalButtons,
+  PayPalButtonsComponentProps,
+  SCRIPT_LOADING_STATE,
+  usePayPalScriptReducer,
+} from '@paypal/react-paypal-js';
 
 export const OrderPage = () => {
   const userInfo = useAppSelector(selectUserInfo);
@@ -30,7 +42,80 @@ export const OrderPage = () => {
     data: order,
     isLoading,
     error,
+    refetch,
   } = useGetOrderDetailsByIdQuery(orderId);
+
+  const { mutateAsync: payOrder, isLoading: loadingPay } =
+    usePayOrderMutation();
+
+  const testPayHandler = async() => {
+    await payOrder({ orderId: orderId! });
+    refetch();
+    toast.success('Order paid');
+  };
+
+  const [{ isPending, isRejected }, paypalDispatch] = usePayPalScriptReducer();
+  const { data: paypalConfig } = useGetPayPalClientIdQuery();
+
+  useEffect(() => {
+    if (paypalConfig && paypalConfig.clientId) {
+      const loadPayPalScript = async () => {
+        await paypalDispatch({
+          type: 'resetOptions',
+          value: {
+            'client-id': paypalConfig.clientId,
+            currency: 'EUR',
+          },
+        });
+        await paypalDispatch({
+          type: 'setLoadingStatus',
+          value: SCRIPT_LOADING_STATE.PENDING,
+        });
+      };
+      loadPayPalScript();
+    }
+  }, [paypalConfig, paypalDispatch]);
+
+  const paypalbuttonTransactionProps: PayPalButtonsComponentProps = {
+    style: {
+      layout: 'vertical',
+    },
+    createOrder: (data, actions) => {
+      return actions.order
+        .create({
+          purchase_units: [
+            {
+              amount: {
+                value: order!.totalPrice.toString(),
+              },
+            },
+          ],
+        })
+        .then((orderID: string) => {
+          return orderID;
+        });
+    },
+    onApprove: (data, actions) => {
+      return actions.order!.capture().then(async (details) => {
+        try {
+          payOrder({ orderId: orderId!, ...details });
+          refetch();
+          toast.success('Order paid');
+        } catch (error) {
+          if (error instanceof Error) {
+            toast.error(error.message);
+          }
+          toast.error('Something went wrong');
+        }
+      });
+    },
+    onError: (error) => {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
+      toast.error('Something went wrong');
+    },
+  };
 
   if (isLoading) return <LoadingBox />;
   if (error) return <div>Failed to load order</div>;
@@ -144,6 +229,24 @@ export const OrderPage = () => {
                 totalPrice,
               }}
             />
+            {!order.isPaid && (
+              <Card withBorder mt="md">
+                {isPending ? (
+                  <LoadingBox />
+                ) : isRejected ? (
+                  <MessageBox type="red">
+                    Failed to connect to PayPal
+                  </MessageBox>
+                ) : (
+                  <Fragment>
+                    <PayPalButtons
+                      {...paypalbuttonTransactionProps}
+                    ></PayPalButtons>
+                    <Button onClick={testPayHandler}>Test Pay</Button>
+                  </Fragment>
+                )}
+              </Card>
+            )}
           </Grid.Col>
         </Grid>
       </Container>

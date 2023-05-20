@@ -8,6 +8,15 @@ import { isAuth } from '../utils';
 export const orderRouter = express.Router();
 
 orderRouter.get(
+  '/',
+  isAuth,
+  asyncHandler(async (req: Request, res: Response) => {
+    const orders = await OrderModel.find({ user: req.user._id });
+    res.json(orders);
+  })
+);
+
+orderRouter.get(
   '/:id',
   isAuth,
   asyncHandler(async (req: Request, res: Response) => {
@@ -36,5 +45,29 @@ orderRouter.post(
       });
       res.status(201).json({ message: 'New Order Created', createdOrder });
     }
+  })
+);
+
+orderRouter.put(
+  '/:id/pay',
+  isAuth,
+  asyncHandler(async (req: Request, res: Response) => {
+    const order = await OrderModel.findById(req.params.id);
+
+    if (!order) res.status(404).json({ message: 'Order not found' });
+
+    console.log(req);
+
+    order.isPaid = true;
+    order.paidAt = new Date(Date.now());
+    order.paymentResult = {
+      paymentId: req.body.id,
+      status: req.body.status,
+      updateTime: req.body.update_time,
+      emailAddress: req.body.payer.email_address,
+    };
+    const updatedOrder = await order.save();
+
+    res.send({ message: 'Order Paid Successfully', order: updatedOrder });
   })
 );
