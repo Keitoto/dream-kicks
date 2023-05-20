@@ -5,10 +5,11 @@ import { UserInfo } from './UserInfo';
 export type Order = Omit<Cart, 'cartItems'> & {
   _id: string;
   orderItems: Cart['cartItems'];
-  deliveredAt: Date;
+  deliveredAt: string;
   isDelivered: boolean;
   isPaid: boolean;
-  paidAt: Date;
+  paidAt: string;
+  createdAt: string;
   paymentResult: {
     emailAddress: string;
     paymentId: string;

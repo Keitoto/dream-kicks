@@ -30,6 +30,7 @@ export type PaymentResult = {
 
 export type Order = {
   _id?: string;
+  createdAt: Date;
   deliveredAt: Date;
   isDelivered: boolean;
   isPaid: boolean;

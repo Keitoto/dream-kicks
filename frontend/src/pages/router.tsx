@@ -15,6 +15,7 @@ import { ProtectedRoute } from '@/pages/ProtectedRoute';
 import { ShippingAddressPage } from '@/pages/ShippingAddressPage';
 import { SignInPage } from '@/pages/SignInPage';
 import { SignUpPage } from '@/pages/SignUpPage';
+import OrderHistoryPage from '@/pages/OrderHistoryPage';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,8 @@ export const router = createBrowserRouter(
         <Route path="payment" element={<PaymentMethodPage />} />
         <Route path="placeorder" element={<PlaceOrderPage />} />
         <Route path="order/:id" element={<OrderPage />} />
+        <Route path="orders" element={<OrderHistoryPage />} />
+
       </Route>
     </Route>
   )

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import { Badge, Button, Container, Flex, Menu } from '@mantine/core';
 
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -39,7 +40,9 @@ export const Header = () => {
                 </Menu.Target>
                 <Menu.Dropdown>
                   <Menu.Item>
-                    <Link to="/profile">Profile</Link>
+                    <Link to="/orders">Order History</Link>
+                  </Menu.Item>
+                  <Menu.Item>
                     <Link to="/signout" onClick={signOutHandler}>
                       Sign out
                     </Link>
