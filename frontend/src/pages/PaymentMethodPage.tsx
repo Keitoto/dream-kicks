@@ -28,7 +28,7 @@ export const PaymentMethodPage = () => {
   }, [shippingAddress, navigate]);
 
   const [paymentMethod, setPaymentMethod] =
-    useState<PaymentMethod>(savedPaymentMethod);
+    useState<PaymentMethod>(savedPaymentMethod || 'PayPal');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,8 +56,8 @@ export const PaymentMethodPage = () => {
             label="Select Payment Method"
             withAsterisk
           >
-            <Radio value="PayPal" label="PayPal" />
-            <Radio value="Stripe" label="Stripe" />
+            <Radio value="PayPal" label="PayPal" name="PayPal" />
+            <Radio value="Stripe" label="Stripe" name="Stripe" />
           </Radio.Group>
 
           <Button type="submit" mt="sm">

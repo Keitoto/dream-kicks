@@ -63,8 +63,8 @@ export const CartPage = () => {
         <Grid>
           <Grid.Col span={8}>
             {cartItems.length === 0 ? (
-              <MessageBox>
-                Cart is empty. <Link to="/">Go Shopping</Link>
+              <MessageBox type='red' title="Cart is empty.">
+                <Link to="/">Go Shopping</Link>
               </MessageBox>
             ) : (
               <List listStyleType="none" type="unordered">

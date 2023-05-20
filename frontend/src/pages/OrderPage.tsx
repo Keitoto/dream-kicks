@@ -36,7 +36,15 @@ export const OrderPage = () => {
   if (error) return <div>Failed to load order</div>;
   if (!order) return <div>Order Not Found</div>;
 
-  const { shippingAddress, paymentMethod, orderItems, itemsPrice, shippingPrice, taxPrice, totalPrice } = order;
+  const {
+    shippingAddress,
+    paymentMethod,
+    orderItems,
+    itemsPrice,
+    shippingPrice,
+    taxPrice,
+    totalPrice,
+  } = order;
 
   return (
     <>
@@ -60,11 +68,11 @@ export const OrderPage = () => {
                 {shippingAddress.country}
               </Text>
               {order.isDelivered ? (
-                <MessageBox>
+                <MessageBox type="blue">
                   Delivered at {order.paidAt.toDateString()}
                 </MessageBox>
               ) : (
-                <MessageBox>Not Delivered</MessageBox>
+                <MessageBox type="yellow">Not Delivered</MessageBox>
               )}
             </Card>
             <Card withBorder mt="md">
@@ -75,9 +83,11 @@ export const OrderPage = () => {
                 <strong>Method: </strong> {paymentMethod}
               </Text>
               {order.isPaid ? (
-                <MessageBox>Paid at {order.paidAt.toDateString()}</MessageBox>
+                <MessageBox type="blue">
+                  Paid at {order.paidAt.toDateString()}
+                </MessageBox>
               ) : (
-                <MessageBox>Not Paid</MessageBox>
+                <MessageBox type="yellow">Not Paid</MessageBox>
               )}
             </Card>
             <Card withBorder mt="md">

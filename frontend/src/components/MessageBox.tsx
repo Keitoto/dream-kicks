@@ -1,9 +1,15 @@
 import { FC, ReactNode } from 'react';
 import { Alert } from '@mantine/core';
 
-const MessageBox: FC<{ children: ReactNode }> = ({ children }) => {
+type Props = {
+  title?: string;
+  type?: 'red' | 'blue' | 'yellow';
+  children: ReactNode;
+};
+
+const MessageBox: FC<Props> = ({ children, title = '', type = 'blue' }) => {
   return (
-    <Alert title="There was an error" color="red">
+    <Alert title={title} color={type}>
       {children}
     </Alert>
   );

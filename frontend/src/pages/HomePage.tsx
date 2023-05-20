@@ -1,9 +1,10 @@
-import { Container } from '@mantine/core';
 import { Helmet } from 'react-helmet-async';
+import { Container } from '@mantine/core';
+
 import LoadingBox from '@/components/LoadingBox';
+import MessageBox from '@/components/MessageBox';
 import ProductList from '@/components/Product/ProductList';
 import { useGetProductsQuery } from '@/hooks/productHooks';
-import MessageBox from '@/components/MessageBox';
 
 export const HomePage = () => {
   const { data: products, error, isLoading } = useGetProductsQuery();
@@ -14,8 +15,18 @@ export const HomePage = () => {
         <LoadingBox />
       </div>
     );
-  if (error) return <MessageBox>Something went wrong</MessageBox>;
-  if (!products) return <MessageBox>No products found</MessageBox>;
+  if (error)
+    return (
+      <MessageBox type="red" title="There was an error">
+        Failed to load products
+      </MessageBox>
+    );
+  if (!products)
+    return (
+      <MessageBox type="red" title="No products found">
+        Please try again
+      </MessageBox>
+    );
 
   return (
     <>
