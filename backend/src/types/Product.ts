@@ -1,8 +1,9 @@
 export type Product = {
+  prompt?: string;
   name: string;
   _id?: string;
   brand: string;
-  category: string;
+  category: string[];
   description: string;
   image: string;
   numInStock: number;
