@@ -37,6 +37,9 @@ export const ProductPage = () => {
   if (error) return <div>Something went wrong</div>;
   if (!product) return <div>Product not found</div>;
 
+  const hasStock = product.numInStock > 0;
+  console.log(hasStock)
+
   const addToCartHandler = () => {
     const quantity = Number(quantityRef.current?.value);
     if (product.numInStock < quantity) {
@@ -94,6 +97,7 @@ export const ProductPage = () => {
                 <tr>
                   <th className="py-1">Qty:</th>
                   <td>
+                    {hasStock ? (
                     <select ref={quantityRef}>
                       {[...Array(product.numInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
@@ -101,11 +105,16 @@ export const ProductPage = () => {
                         </option>
                       ))}
                     </select>
+                    ) : (
+                      <select disabled>
+                        <option>0</option>
+                      </select>
+                    )}
                   </td>
                 </tr>
                 <tr>
                   <td className="py-4 text-center" colSpan={2}>
-                    <Button type="button" onClick={addToCartHandler}>
+                    <Button type="button" onClick={addToCartHandler} disabled={!hasStock}>
                       Add to Cart
                     </Button>
                   </td>
