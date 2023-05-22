@@ -3,7 +3,7 @@ import { Container } from '@mantine/core';
 
 import LoadingBox from '@/components/LoadingBox';
 import MessageBox from '@/components/MessageBox';
-import ProductList from '@/components/Product/ProductList';
+import { ProductList } from '@/components/Product/ProductList';
 import { useGetProductsQuery } from '@/hooks/productHooks';
 
 export const HomePage = () => {
