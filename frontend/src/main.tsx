@@ -16,7 +16,12 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <HelmetProvider>
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+    <MantineProvider withGlobalStyles withNormalizeCSS
+      theme={{
+        fontFamily: 'Roboto, sans-serif',
+        primaryColor: 'teal',
+      }}
+    >
       <ReduxProvider store={store}>
         <PayPalScriptProvider
           options={{

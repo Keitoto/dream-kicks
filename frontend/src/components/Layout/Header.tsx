@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
 
-import { Badge, Button, Container, Flex, Menu } from '@mantine/core';
+import {
+  ArrowBadgeDown,
+  Basket,
+  ChevronDown,
+  ShoppingCart,
+} from 'tabler-icons-react';
+import { Badge, Button, Container, Flex, Menu, Text } from '@mantine/core';
 
+import { HEADER_HEIGHT } from '@/constants/styles';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { selectCartItems } from '@/store/cartSlice';
 import { selectUserInfo, signOut } from '@/store/userSlice';
@@ -23,20 +30,25 @@ export const Header = () => {
   return (
     <Container size="lg">
       <Flex
-        mih={50}
+        h={HEADER_HEIGHT}
         justify="space-between"
         align="center"
         direction="row"
-        wrap="nowrap"
         px="md"
       >
-        <Link to="/">Dream Kicks</Link>
+        <Link to="/" className="no-underline font-bold">
+          <Text size="xl" color="teal">
+            Dream Kicks
+          </Text>
+        </Link>
         <nav>
-          <Flex gap="md">
+          <Flex gap="md" align="center">
             {userInfo ? (
               <Menu>
                 <Menu.Target>
-                  <Button>{userInfo.name}</Button>
+                  <Button rightIcon={<ChevronDown size={20} />}>
+                    {userInfo.name}
+                  </Button>
                 </Menu.Target>
                 <Menu.Dropdown>
                   <Menu.Item>
@@ -52,10 +64,10 @@ export const Header = () => {
             ) : (
               <Link to="/signin">Sign in</Link>
             )}
-            <Link to="/cart">
-              Cart
+            <Link to="/cart" className="flex items-center gap-1">
+              <Basket color="black" />
               {cartItems.length > 0 && (
-                <Badge variant="light" color="blue">
+                <Badge variant="light" color="teal">
                   {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
                 </Badge>
               )}
