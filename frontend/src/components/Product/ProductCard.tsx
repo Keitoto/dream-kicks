@@ -50,20 +50,19 @@ const ProductCard: FC<Props> = ({ product }) => {
     >
       <Card.Section>
         <Link to={`/product/${product.slug}`}>
-          <AspectRatio ratio={1920 / 1080}>
-            <Image src={product.image} alt={product.name} />
+          <AspectRatio ratio={1 / 1}>
+            <Image src={`/products/${product.image}.png`} alt={product.name} />
           </AspectRatio>
         </Link>
       </Card.Section>
       <Flex direction="column" className="flex-1">
         <Group mt="sm">
-          <Title order={2} size="h3">
+          <Title order={2} size="h3" w='100%'>
             {product.name}
           </Title>
-          <span>${product.price}</span>
+          <div>${product.price}</div>
         </Group>
 
-        <Text mt="sm">{product.description}</Text>
         <Box mt="auto">
           <Button
             onClick={() =>
