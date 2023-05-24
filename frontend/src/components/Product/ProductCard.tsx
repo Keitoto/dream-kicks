@@ -16,6 +16,7 @@ import {
 } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 
+import { StyledLink } from '@/components/UI/StyledLink';
 import { convertProductToCartItem } from '@/helpers';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { addItemToCart, selectCartItems } from '@/store/cartSlice';
@@ -46,48 +47,53 @@ const ProductCard: FC<Props> = ({ product }) => {
   return (
     <Card
       key={product._id}
-      shadow="sm"
-      padding="lg"
-      radius="md"
-      withBorder
+      radius="none"
+      padding="none"
       className="flex flex-col"
-      ref={ref}
     >
       <Card.Section>
-        <AspectRatio ratio={1 / 1}>
+        <AspectRatio ratio={1 / 1} ref={ref}>
           <Image src={`/products/${product.image}.png`} alt={product.name} />
+          {hovered && (
+            <Overlay
+              className="flex flex-col justify-center items-center gap-4"
+              onClick={() => {
+                navigate(`/product/${product.slug}`);
+              }}
+              opacity={0.1}
+            >
+              <Button
+                onClick={() => navigate(`/product/${product.slug}`)}
+                w="80%"
+                radius='xl'
+                variant="default"
+              >
+                View Detail
+              </Button>
+              <Button
+                onClick={() =>
+                  addItemToCartHandler(convertProductToCartItem(product))
+                }
+                w="80%"
+                radius='xl'
+                disabled={product.numInStock === 0}
+              >
+                {product.numInStock === 0 ? 'Out of stock' : 'Add to Cart'}
+              </Button>
+            </Overlay>
+          )}
         </AspectRatio>
       </Card.Section>
-      <Flex direction="column" className="flex-1" mt="lg">
-        <Title order={2} size="sm" weight="500" w="100%">
-          {product.name}
-        </Title>
+      <Flex direction="column" className="flex-1" py="md">
+        <StyledLink to={`/product/${product.slug}`}>
+          <Title order={2} size="14px" weight="500" w="100%">
+            {product.name}
+          </Title>
+        </StyledLink>
         <Text c="gray.6" size="sm">
           ${product.price}
         </Text>
       </Flex>
-      {hovered && (
-        <Overlay
-          className="cursor-pointer flex flex-col justify-center items-center gap-4"
-          onClick={() => {
-            navigate(`/product/${product.slug}`);
-          }}
-          opacity={0.1}
-        >
-          <Button onClick={() => navigate(`/product/${product.slug}`)} w="80%" variant='default'>
-            View Detail
-          </Button>
-          <Button
-            onClick={() =>
-              addItemToCartHandler(convertProductToCartItem(product))
-            }
-            w="80%"
-            disabled={product.numInStock === 0}
-          >
-            {product.numInStock === 0 ? 'Out of stock' : 'Add to Cart'}
-          </Button>
-        </Overlay>
-      )}
     </Card>
   );
 };
