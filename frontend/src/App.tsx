@@ -8,7 +8,7 @@ import { Header, Footer } from './components/Layout';
 const App = () => {
   return (
     <>
-      <AppShell header={<Header />} footer={<Footer />}>
+      <AppShell padding={0} header={<Header />} footer={<Footer />}>
         <Outlet />
       </AppShell>
       <ToastContainer position="bottom-center" limit={1} />

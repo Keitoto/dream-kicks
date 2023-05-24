@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
 
 import {
-  ArrowBadgeDown,
   Basket,
   ChevronDown,
-  ShoppingCart,
 } from 'tabler-icons-react';
 import { Badge, Button, Container, Flex, Menu, Text } from '@mantine/core';
 

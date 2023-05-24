@@ -6,11 +6,16 @@ import { Product } from '@/types/Product';
 
 type Props = {
   products: Product[];
+  className?: string;
 };
 
-export const ProductList: FC<Props> = ({ products }) => {
+export const ProductList: FC<Props> = ({ products, className }) => {
   return (
-    <SimpleGrid cols={4} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+    <SimpleGrid
+      className={className}
+      cols={4}
+      breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
+    >
       {products.map((product) => (
         <ProductCard key={product._id} product={product} />
       ))}
