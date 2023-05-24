@@ -154,7 +154,7 @@ export const OrderPage = () => {
               </Text>
               {order.isDelivered ? (
                 <MessageBox type="blue">
-                  Delivered at {order.paidAt.toDateString()}
+                  Delivered at {order.paidAt.toString()}
                 </MessageBox>
               ) : (
                 <MessageBox type="yellow">Not Delivered</MessageBox>
@@ -169,7 +169,7 @@ export const OrderPage = () => {
               </Text>
               {order.isPaid ? (
                 <MessageBox type="blue">
-                  Paid at {order.paidAt.toDateString()}
+                  Paid at {order.paidAt.toString()}
                 </MessageBox>
               ) : (
                 <MessageBox type="yellow">Not Paid</MessageBox>
