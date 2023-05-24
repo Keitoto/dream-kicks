@@ -25,5 +25,7 @@ const userSlice = createSlice({
 export const { signIn, signOut } = userSlice.actions;
 
 export const selectUserInfo = (state: RootState) => state.userInfo;
+export const selectIsAdmin = (state: RootState) =>
+  state.userInfo?.isAdmin === true;
 
 export const userReducer = userSlice.reducer;
