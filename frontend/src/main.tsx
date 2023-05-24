@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       withNormalizeCSS
       theme={{
         fontFamily: 'Poppins, sans-serif',
+        black: '#222',
         primaryColor: 'teal',
         cursorType: 'pointer',
       }}
