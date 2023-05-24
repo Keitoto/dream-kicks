@@ -9,7 +9,12 @@ export default {
       lg: '1200px',
       xl: '1400px',
     },
-    extend: {},
+    extend: {
+      colors: {
+        default: '#222',
+        hover: 'rgb(77,	171, 247)',
+      },
+    },
   },
   plugins: [],
 };
