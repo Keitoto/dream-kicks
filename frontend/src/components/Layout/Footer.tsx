@@ -1,4 +1,15 @@
-import { Text, Container, Flex, Stack, List, Box, Group } from '@mantine/core';
+import {
+  Text,
+  Container,
+  Flex,
+  Stack,
+  List,
+  Box,
+  Group,
+  Button,
+  Input,
+  TextInput,
+} from '@mantine/core';
 import {
   Mail,
   MapPin,
@@ -12,7 +23,7 @@ import {
 import { useGetProductsQuery } from '@/hooks/productHooks';
 
 export const Footer = () => {
-  const { data: products, error, isLoading } = useGetProductsQuery();
+  const { data: products, isLoading } = useGetProductsQuery();
 
   return (
     <>
@@ -97,14 +108,8 @@ export const Footer = () => {
                 Subscribe to our newsletter and get 10% off your first purchase
               </Text>
               <Group mt="md" spacing="sm">
-                <input
-                  type="text"
-                  placeholder="Enter your email"
-                  className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-                />
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                  Subscribe
-                </button>
+                <TextInput placeholder="Your email" className='w-full' />
+                <Button>Subscribe</Button>
               </Group>
             </Box>
           </Flex>
