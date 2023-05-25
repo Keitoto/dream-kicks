@@ -28,7 +28,7 @@ export const SignInPage = () => {
   const dispatch = useAppDispatch();
 
   // react-query mutation
-  const { mutateAsync: signInMutation, isLoading } = useSignInMutation();
+  const { isLoading, mutateAsync: signInMutation } = useSignInMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

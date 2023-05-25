@@ -4,12 +4,12 @@ import { UserInfo } from './UserInfo';
 
 export type Order = Omit<Cart, 'cartItems'> & {
   _id: string;
-  orderItems: Cart['cartItems'];
+  createdAt: string;
   deliveredAt: string;
   isDelivered: boolean;
   isPaid: boolean;
+  orderItems: Cart['cartItems'];
   paidAt: string;
-  createdAt: string;
   paymentResult: {
     emailAddress: string;
     paymentId: string;

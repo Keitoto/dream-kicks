@@ -1,5 +1,5 @@
+import { Center, Container } from '@mantine/core';
 import { Helmet } from 'react-helmet-async';
-import { Container } from '@mantine/core';
 
 import LoadingBox from '@/components/LoadingBox';
 import MessageBox from '@/components/MessageBox';
@@ -13,21 +13,25 @@ export const HomePage = () => {
 
   if (isLoading)
     return (
-      <div>
+      <Center>
         <LoadingBox />
-      </div>
+      </Center>
     );
   if (error)
     return (
-      <MessageBox type="red" title="There was an error">
-        Failed to load products
-      </MessageBox>
+      <Center>
+        <MessageBox type="red" title="There was an error">
+          Failed to load products
+        </MessageBox>
+      </Center>
     );
   if (!products)
     return (
-      <MessageBox type="red" title="No products found">
-        Please try again
-      </MessageBox>
+      <Center>
+        <MessageBox type="red" title="No products found">
+          Please try again
+        </MessageBox>
+      </Center>
     );
 
   return (

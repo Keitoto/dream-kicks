@@ -1,16 +1,15 @@
 import './index.css';
-import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import { Provider as ReduxProvider } from 'react-redux';
-
-import { HelmetProvider } from 'react-helmet-async';
+import { MantineProvider } from '@mantine/core';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { MantineProvider } from '@mantine/core';
+import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
+import { Provider as ReduxProvider } from 'react-redux';
+import { RouterProvider } from 'react-router-dom';
+import { store } from '@/store';
 
 import { router } from '@/pages/router';
-import { store } from '@/store';
-import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const queryClient = new QueryClient();
 
@@ -20,10 +19,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       withGlobalStyles
       withNormalizeCSS
       theme={{
-        fontFamily: 'Poppins, sans-serif',
         black: '#222',
-        primaryColor: 'teal',
         cursorType: 'pointer',
+        fontFamily: 'Poppins, sans-serif',
+        primaryColor: 'teal',
       }}
     >
       <ReduxProvider store={store}>
@@ -31,7 +30,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           options={{
             'client-id': 'sb',
           }}
-          deferLoading={true}
+          deferLoading
         >
           <QueryClientProvider client={queryClient}>
             <RouterProvider router={router} />

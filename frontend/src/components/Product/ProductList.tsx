@@ -5,11 +5,11 @@ import ProductCard from '@/components/Product/ProductCard';
 import { Product } from '@/types/Product';
 
 type Props = {
-  products: Product[];
   className?: string;
+  products: Product[];
 };
 
-export const ProductList: FC<Props> = ({ products, className }) => {
+export const ProductList: FC<Props> = ({ className, products }) => {
   return (
     <SimpleGrid
       className={className}
@@ -17,9 +17,9 @@ export const ProductList: FC<Props> = ({ products, className }) => {
       verticalSpacing="2rem"
       cols={4}
       breakpoints={[
-        { maxWidth: 'lg', cols: 3 },
-        { maxWidth: 'sm', cols: 2 },
-        { maxWidth: 'xs', cols: 1 },
+        { cols: 3, maxWidth: 'lg' },
+        { cols: 2, maxWidth: 'sm' },
+        { cols: 1, maxWidth: 'xs' },
       ]}
     >
       {products.map((product) => (

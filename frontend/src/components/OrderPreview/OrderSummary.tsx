@@ -1,29 +1,27 @@
 import { FC } from 'react';
-import { List, Card, Title, Grid, Button, Divider } from '@mantine/core';
 
+import { List, Card, Title, Grid, Button, Divider } from '@mantine/core';
 import LoadingBox from '@/components/LoadingBox';
-import { useAppSelector } from '@/store';
-import { selectCart } from '@/store/cartSlice';
 
 type Props = {
+  canOrder?: boolean;
+  handleOrder?: () => void;
   isLoading: boolean;
   isValid: boolean;
   prices: {
     itemsPrice: number;
+    shippingPrice: number;
     taxPrice: number;
     totalPrice: number;
-    shippingPrice: number;
   };
-  canOrder?: boolean;
-  handleOrder?: () => void;
 };
 
 export const OrderSummary: FC<Props> = ({
-  isValid,
-  isLoading,
-  prices: { itemsPrice, taxPrice, totalPrice, shippingPrice },
   canOrder = false,
   handleOrder = () => {},
+  isLoading,
+  isValid,
+  prices: { itemsPrice, shippingPrice, taxPrice, totalPrice },
 }) => {
   return (
     <Card withBorder>

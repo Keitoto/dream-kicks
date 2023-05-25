@@ -1,22 +1,19 @@
-import { Link, useNavigate } from 'react-router-dom';
-
-import { Helmet } from 'react-helmet-async';
-import { toast } from 'react-toastify';
-import { CircleMinus, CirclePlus } from 'tabler-icons-react';
 import {
   Container,
   Flex,
   Grid,
   List,
   Title,
-  UnstyledButton,
   Button,
   Card,
   AspectRatio,
 } from '@mantine/core';
+import { Helmet } from 'react-helmet-async';
+import { Link, useNavigate } from 'react-router-dom';
+import { CircleMinus, CirclePlus } from 'tabler-icons-react';
+import { useAppDispatch, useAppSelector } from '@/store';
 
 import MessageBox from '@/components/MessageBox';
-import { useAppDispatch, useAppSelector } from '@/store';
 import {
   addItemToCart,
   removeItemFromCart,
@@ -63,7 +60,7 @@ export const CartPage = () => {
         <Grid>
           <Grid.Col span={8}>
             {cartItems.length === 0 ? (
-              <MessageBox type='red' title="Cart is empty.">
+              <MessageBox type="red" title="Cart is empty.">
                 <Link to="/">Go Shopping</Link>
               </MessageBox>
             ) : (

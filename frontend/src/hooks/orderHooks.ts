@@ -5,15 +5,15 @@ import { Order } from '@/types/Order';
 
 export const useGetOrderDetailsByIdQuery = (id: string) =>
   useQuery({
-    queryKey: ['orders', id], // key for cache
     queryFn: async () => (await apiClient.get<Order>(`/api/orders/${id}`)).data,
+    queryKey: ['orders', id], // key for cache
   });
 
 export const useGetPayPalClientIdQuery = () =>
   useQuery({
-    queryKey: ['paypalClientId'],
     queryFn: async () =>
       (await apiClient.get<{ clientId: string }>('/api/keys/paypal')).data,
+    queryKey: ['paypalClientId'],
   });
 
 export const usePayOrderMutation = () =>
@@ -43,7 +43,7 @@ export const useCreateOrderMutation = () =>
   useMutation({
     mutationFn: async (order: OrderMutationInput) =>
       (
-        await apiClient.post<{ message: string; createdOrder?: Order }>(
+        await apiClient.post<{ createdOrder?: Order; message: string }>(
           '/api/orders',
           order
         )
@@ -52,6 +52,6 @@ export const useCreateOrderMutation = () =>
 
 export const useGetUserOrdersQuery = () =>
   useQuery({
-    queryKey: ['orders'],
     queryFn: async () => (await apiClient.get<Order[]>('/api/orders')).data,
+    queryKey: ['orders'],
   });

@@ -15,6 +15,12 @@ import {
   Button,
 } from '@mantine/core';
 
+import {
+  PayPalButtons,
+  PayPalButtonsComponentProps,
+  SCRIPT_LOADING_STATE,
+  usePayPalScriptReducer,
+} from '@paypal/react-paypal-js';
 import LoadingBox from '@/components/LoadingBox';
 import MessageBox from '@/components/MessageBox';
 import { OrderSummary } from '@/components/OrderPreview/OrderSummary';
@@ -25,12 +31,6 @@ import {
 } from '@/hooks/orderHooks';
 import { useAppSelector } from '@/store';
 import { selectUserInfo } from '@/store/userSlice';
-import {
-  PayPalButtons,
-  PayPalButtonsComponentProps,
-  SCRIPT_LOADING_STATE,
-  usePayPalScriptReducer,
-} from '@paypal/react-paypal-js';
 
 export const OrderPage = () => {
   const userInfo = useAppSelector(selectUserInfo);
@@ -40,12 +40,12 @@ export const OrderPage = () => {
 
   const {
     data: order,
-    isLoading,
     error,
+    isLoading,
     refetch,
   } = useGetOrderDetailsByIdQuery(orderId);
 
-  const { mutateAsync: payOrder, isLoading: loadingPay } =
+  const { isLoading: loadingPay, mutateAsync: payOrder } =
     usePayOrderMutation();
 
   const testPayHandler = async() => {
@@ -76,10 +76,7 @@ export const OrderPage = () => {
     }
   }, [paypalConfig, paypalDispatch]);
 
-  const paypalbuttonTransactionProps: PayPalButtonsComponentProps = {
-    style: {
-      layout: 'vertical',
-    },
+  const payPalButtonTransactionProps: PayPalButtonsComponentProps = {
     createOrder: (data, actions) => {
       return actions.order
         .create({
@@ -115,6 +112,9 @@ export const OrderPage = () => {
       }
       toast.error('Something went wrong');
     },
+    style: {
+      layout: 'vertical',
+    },
   };
 
   if (isLoading) return <LoadingBox />;
@@ -122,10 +122,10 @@ export const OrderPage = () => {
   if (!order) return <div>Order Not Found</div>;
 
   const {
-    shippingAddress,
-    paymentMethod,
-    orderItems,
     itemsPrice,
+    orderItems,
+    paymentMethod,
+    shippingAddress,
     shippingPrice,
     taxPrice,
     totalPrice,
@@ -238,12 +238,12 @@ export const OrderPage = () => {
                     Failed to connect to PayPal
                   </MessageBox>
                 ) : (
-                  <Fragment>
+                  <>
                     <PayPalButtons
-                      {...paypalbuttonTransactionProps}
-                    ></PayPalButtons>
+                      {...payPalButtonTransactionProps}
+                     />
                     <Button onClick={testPayHandler}>Test Pay</Button>
-                  </Fragment>
+                  </>
                 )}
               </Card>
             )}

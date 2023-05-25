@@ -41,9 +41,9 @@ export const ProductPage = () => {
 
   const hasStock = product.numInStock > 0;
   const bread = [
-    { title: 'Home', href: '/' },
-    { title: 'Products', href: '/products' },
-    { title: product.name, href: `products/${product.slug}` },
+    { href: '/', title: 'Home' },
+    { href: '/products', title: 'Products' },
+    { href: `products/${product.slug}`, title: product.name },
   ].map((item, index, arr) =>
     index === arr.length - 1 ? (
       <Text key={index}  size='sm'>{item.title}</Text>

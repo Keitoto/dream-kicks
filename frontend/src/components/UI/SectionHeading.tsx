@@ -16,6 +16,6 @@ export const SectionHeading: FC<{
 
 const Border = () => {
   return (
-    <span className='block w-16 h-0.5 bg-black mx-8'></span>
+    <span className='block w-16 h-0.5 bg-black mx-8' />
   )
 }

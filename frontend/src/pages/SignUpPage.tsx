@@ -30,23 +30,23 @@ export const SignUpPage = () => {
   const form = useForm({
     initialValues: {
       name: '',
+      confirmPassword: '',
       email: '',
       password: '',
-      confirmPassword: '',
     },
     validate: {
       name: (value) => (value.length < 3 ? 'Name is too short' : null),
+      confirmPassword: (value, values) =>
+        value !== values.password ? 'Passwords did not match' : null,
       email: (value) =>
         !value.includes('@') ? 'Please enter a valid email' : null,
       password: (value) =>
         value.length < 6 ? 'Password must be at least 6 characters' : null,
-      confirmPassword: (value, values) =>
-        value !== values.password ? 'Passwords did not match' : null,
     },
   });
 
   // react-query mutation
-  const { mutateAsync: signUpMutation, isLoading } = useSignUpMutation();
+  const { isLoading, mutateAsync: signUpMutation } = useSignUpMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

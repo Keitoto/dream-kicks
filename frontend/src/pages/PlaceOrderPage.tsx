@@ -31,7 +31,7 @@ export const PlaceOrderPage = () => {
   const cart = useAppSelector(selectCart);
   const userInfo = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
-  const { cartItems, shippingAddress, paymentMethod } = cart;
+  const { cartItems, paymentMethod, shippingAddress } = cart;
 
   // redirect if not saved shipping address
   useEffect(() => {
@@ -52,16 +52,16 @@ export const PlaceOrderPage = () => {
   dispatch(savePrices({ itemsPrice, shippingPrice, taxPrice, totalPrice }));
 
   // get react query mutation hook
-  const { mutateAsync: createOrder, isLoading } = useCreateOrderMutation();
+  const { isLoading, mutateAsync: createOrder } = useCreateOrderMutation();
 
   // place order handler
   const handleOrder = async () => {
     try {
       const data = await createOrder({
-        orderItems: cartItems,
-        shippingAddress,
-        paymentMethod,
         itemsPrice: cart.itemsPrice,
+        orderItems: cartItems,
+        paymentMethod,
+        shippingAddress,
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,

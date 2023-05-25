@@ -8,13 +8,13 @@ const initialState: Cart = {
   cartItems: localStorage.getItem('cartItems')
     ? JSON.parse(localStorage.getItem('cartItems')!)
     : [],
-  shippingAddress: localStorage.getItem('shippingAddress')
-    ? JSON.parse(localStorage.getItem('shippingAddress')!)
-    : {},
+  itemsPrice: 0,
   paymentMethod: localStorage.getItem('paymentMethod')
     ? (localStorage.getItem('paymentMethod') as PaymentMethod)
     : 'PayPal',
-  itemsPrice: 0,
+  shippingAddress: localStorage.getItem('shippingAddress')
+    ? JSON.parse(localStorage.getItem('shippingAddress')!)
+    : {},
   shippingPrice: 0,
   taxPrice: 0,
   totalPrice: 0,
@@ -22,6 +22,25 @@ const initialState: Cart = {
 
 const cartSlice = createSlice({
   name: 'cart',
+  extraReducers: (builder) => {
+    builder.addCase(signOut, (state) => {
+      state = {
+        cartItems: [],
+        itemsPrice: 0,
+        paymentMethod: 'PayPal',
+        shippingAddress: {
+          address: '',
+          city: '',
+          country: '',
+          fullName: '',
+          postalCode: '',
+        },
+        shippingPrice: 0,
+        taxPrice: 0,
+        totalPrice: 0,
+      };
+    });
+  },
   initialState,
   reducers: {
     addItemToCart(state, action: PayloadAction<CartItem>) {
@@ -40,16 +59,13 @@ const cartSlice = createSlice({
       }
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
+    clearCart(state) {
+      state.cartItems = [];
+      localStorage.removeItem('cartItems');
+    },
     removeItemFromCart(state, action: PayloadAction<string>) {
       state.cartItems = state.cartItems.filter((i) => i._id !== action.payload);
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
-    },
-    saveShippingAddress(state, action: PayloadAction<ShippingAddress>) {
-      state.shippingAddress = action.payload;
-      localStorage.setItem(
-        'shippingAddress',
-        JSON.stringify(state.shippingAddress)
-      );
     },
     savePaymentMethod(state, action: PayloadAction<PaymentMethod>) {
       state.paymentMethod = action.payload;
@@ -66,39 +82,23 @@ const cartSlice = createSlice({
       state.taxPrice = action.payload.taxPrice;
       state.totalPrice = action.payload.totalPrice;
     },
-    clearCart(state) {
-      state.cartItems = [];
-      localStorage.removeItem('cartItems');
+    saveShippingAddress(state, action: PayloadAction<ShippingAddress>) {
+      state.shippingAddress = action.payload;
+      localStorage.setItem(
+        'shippingAddress',
+        JSON.stringify(state.shippingAddress)
+      );
     }
-  },
-  extraReducers: (builder) => {
-    builder.addCase(signOut, (state) => {
-      state = {
-        cartItems: [],
-        shippingAddress: {
-          fullName: '',
-          address: '',
-          city: '',
-          postalCode: '',
-          country: '',
-        },
-        paymentMethod: 'PayPal',
-        itemsPrice: 0,
-        shippingPrice: 0,
-        taxPrice: 0,
-        totalPrice: 0,
-      };
-    });
   },
 });
 
 export const {
   addItemToCart,
+  clearCart,
   removeItemFromCart,
-  saveShippingAddress,
   savePaymentMethod,
   savePrices,
-  clearCart,
+  saveShippingAddress,
 } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart;

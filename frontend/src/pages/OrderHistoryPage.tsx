@@ -1,15 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-
-import { Helmet } from 'react-helmet-async';
 import { Button, Container, Table, Title } from '@mantine/core';
-
+import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import LoadingBox from '@/components/LoadingBox';
 import MessageBox from '@/components/MessageBox';
 import { useGetUserOrdersQuery } from '@/hooks/orderHooks';
 
 const OrderHistoryPage = () => {
   const navigate = useNavigate();
-  const { data: orders, isLoading, error } = useGetUserOrdersQuery();
+  const { data: orders, error, isLoading } = useGetUserOrdersQuery();
 
   if (!orders)
     return (

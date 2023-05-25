@@ -1,6 +1,3 @@
-import { Link } from 'react-router-dom';
-
-import Balancer from 'react-wrap-balancer';
 import {
   Container,
   Stack,
@@ -9,9 +6,9 @@ import {
   Image,
   Text,
   Button,
-  Anchor,
 } from '@mantine/core';
-
+import { Link } from 'react-router-dom';
+import Balancer from 'react-wrap-balancer';
 import heroImg from '@/assets/heroImg.png';
 
 export const HeroSection = () => {

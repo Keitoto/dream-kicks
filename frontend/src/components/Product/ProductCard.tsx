@@ -1,7 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom';
-
 import { FC } from 'react';
-import { toast } from 'react-toastify';
+
 import {
   Card,
   AspectRatio,
@@ -9,13 +7,12 @@ import {
   Image,
   Text,
   Button,
-  Group,
   Flex,
-  Box,
   Overlay,
 } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
-
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { StyledLink } from '@/components/UI/StyledLink';
 import { convertProductToCartItem } from '@/helpers';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -56,16 +53,16 @@ const ProductCard: FC<Props> = ({ product }) => {
           <Image src={`/products/${product.image}.png`} alt={product.name} />
           {hovered && (
             <Overlay
-              className="flex flex-col justify-center items-center gap-4"
-              onClick={() => {
-                navigate(`/product/${product.slug}`);
-              }}
+              className="flex flex-col justify-center items-center gap-4 transition-opacity"
+              // onClick={() => {
+              //   navigate(`/product/${product.slug}`);
+              // }}
               opacity={0.1}
             >
               <Button
                 onClick={() => navigate(`/product/${product.slug}`)}
                 w="80%"
-                radius='xl'
+                radius="xl"
                 variant="default"
               >
                 View Detail
@@ -75,7 +72,7 @@ const ProductCard: FC<Props> = ({ product }) => {
                   addItemToCartHandler(convertProductToCartItem(product))
                 }
                 w="80%"
-                radius='xl'
+                radius="xl"
                 disabled={product.numInStock === 0}
               >
                 {product.numInStock === 0 ? 'Out of stock' : 'Add to Cart'}

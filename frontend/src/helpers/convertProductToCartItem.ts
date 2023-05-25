@@ -3,12 +3,12 @@ import { Product } from '@/types/Product';
 
 export const convertProductToCartItem = (product: Product): CartItem => {
   return {
-    _id: product._id,
     name: product.name,
-    slug: product.slug,
+    _id: product._id,
     image: product.image,
-    price: product.price,
     numInStock: product.numInStock,
+    price: product.price,
     quantity: 1,
+    slug: product.slug,
   };
 };

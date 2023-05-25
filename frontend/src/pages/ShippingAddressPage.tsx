@@ -26,11 +26,11 @@ export const ShippingAddressPage = () => {
 
   const shippingAddressForm = useForm({
     initialValues: {
-      fullName: shippingAddress?.fullName || '',
       address: shippingAddress?.address || '',
       city: shippingAddress?.city || '',
-      postalCode: shippingAddress?.postalCode || '',
       country: shippingAddress?.country || '',
+      fullName: shippingAddress?.fullName || '',
+      postalCode: shippingAddress?.postalCode || '',
     },
   });
 

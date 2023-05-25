@@ -1,5 +1,6 @@
-import { AppShell } from '@mantine/core';
 import { FC, ReactNode } from 'react';
+
+import { AppShell } from '@mantine/core';
 import { Footer } from '@/components/Layout/Footer';
 import { Header } from '@/components/Layout/Header';
 
@@ -10,7 +11,7 @@ type Props = {
 export const Layout: FC<Props> = ({ children }) => {
   return (
     <AppShell header={<Header />} footer={<Footer />}>
-        <main>{children}</main>
-      </AppShell>
+      <main>{children}</main>
+    </AppShell>
   );
 };
