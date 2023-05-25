@@ -87,9 +87,16 @@ const ProductCard: FC<Props> = ({ product }) => {
             {product.name}
           </Title>
         </StyledLink>
+        {product.numInStock > 0 ? (
         <Text c="gray.6" size="sm">
           ${product.price}
         </Text>
+        ) : (
+          <Text c="gray.6" size="sm">
+            <span className='line-through'>${product.price}</span> - Out of stock
+          <Text c="gray.6" size="sm">
+          </Text>
+        )}
       </Flex>
     </Card>
   );
