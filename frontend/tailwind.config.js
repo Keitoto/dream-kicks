@@ -13,6 +13,7 @@ export default {
       colors: {
         default: '#222',
         hover: 'rgb(77,	171, 247)',
+        bg: '#ECEBEC',
       },
     },
   },
