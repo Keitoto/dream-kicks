@@ -13,7 +13,7 @@ import heroImg from '@/assets/heroImg.png';
 
 export const HeroSection = () => {
   return (
-    <section className="bg-[#ECEBEC] px-8">
+    <section className="bg-bg px-8">
       <Container size="xl">
         <SimpleGrid cols={2}>
           <Stack justify="center">

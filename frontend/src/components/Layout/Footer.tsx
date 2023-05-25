@@ -27,7 +27,7 @@ export const Footer = () => {
 
   return (
     <>
-      <footer className="bg-[#ECEBEC] px-8 py-16">
+      <footer className="bg-bg px-8 py-16">
         <Container size="xl">
           <Flex gap="xl" justify="space-between">
             <Stack mr="xl">
