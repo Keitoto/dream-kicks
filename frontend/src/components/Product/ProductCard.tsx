@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { convertProductToCartItem } from '@/helpers';
+import { useAppDispatch, useAppSelector } from '@/store';
 import {
   Card,
   AspectRatio,
@@ -13,9 +15,8 @@ import {
 import { useHover } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
 import { StyledLink } from '@/components/UI/StyledLink';
-import { convertProductToCartItem } from '@/helpers';
-import { useAppDispatch, useAppSelector } from '@/store';
 import { addItemToCart, selectCartItems } from '@/store/cartSlice';
 import { CartItem } from '@/types/Cart';
 import { Product } from '@/types/Product';
@@ -54,13 +55,10 @@ const ProductCard: FC<Props> = ({ product }) => {
           {hovered && (
             <Overlay
               className="flex flex-col justify-center items-center gap-4 transition-opacity"
-              // onClick={() => {
-              //   navigate(`/product/${product.slug}`);
-              // }}
               opacity={0.1}
             >
               <Button
-                onClick={() => navigate(`/product/${product.slug}`)}
+                onClick={() => navigate(`/products/${product.slug}`)}
                 w="80%"
                 radius="xl"
                 variant="default"
@@ -82,19 +80,18 @@ const ProductCard: FC<Props> = ({ product }) => {
         </AspectRatio>
       </Card.Section>
       <Flex direction="column" className="flex-1" py="md">
-        <StyledLink to={`/product/${product.slug}`}>
+        <StyledLink to={`/products/${product.slug}`}>
           <Title order={2} size="14px" weight="500" w="100%">
             {product.name}
           </Title>
         </StyledLink>
         {product.numInStock > 0 ? (
-        <Text c="gray.6" size="sm">
-          ${product.price}
-        </Text>
+          <Text c="gray.6" size="sm">
+            ${product.price}
+          </Text>
         ) : (
           <Text c="gray.6" size="sm">
             <span className='line-through'>${product.price}</span> - Out of stock
-          <Text c="gray.6" size="sm">
           </Text>
         )}
       </Flex>

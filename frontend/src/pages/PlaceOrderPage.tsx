@@ -138,7 +138,7 @@ export const PlaceOrderPage = () => {
                               </AspectRatio>
                             </Grid.Col>
                             <Grid.Col span={6}>
-                              <Link to={`/product/${item.slug}`}>
+                              <Link to={`/products/${item.slug}`}>
                                 {item.name}
                               </Link>
                             </Grid.Col>
