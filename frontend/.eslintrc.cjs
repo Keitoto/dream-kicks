@@ -1,3 +1,4 @@
+const orderedKeys = ['children','className','id','type','href', 'name', 'title'];
 module.exports = {
   env: {
     browser: true,
@@ -49,10 +50,8 @@ module.exports = {
         ignorePropertyModificationsFor: ['state'],
       },
     ],
-    'sort-keys-custom-order/type-keys': [
-      'error',
-      { orderedKeys: ['id', 'name', 'title'] },
-    ],
+    'sort-keys-custom-order/object-keys': ['error', { orderedKeys }],
+    'sort-keys-custom-order/type-keys': ['error', { orderedKeys }],
     'react/jsx-props-no-spreading': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/extensions': 'off',
