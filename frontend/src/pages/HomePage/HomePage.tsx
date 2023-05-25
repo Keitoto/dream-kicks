@@ -6,7 +6,9 @@ import MessageBox from '@/components/MessageBox';
 import { ProductList } from '@/components/Product/ProductList';
 import { SectionHeading } from '@/components/UI/SectionHeading';
 import { useGetProductsQuery } from '@/hooks/productHooks';
+import { Features } from '@/pages/HomePage/Features';
 import { HeroSection } from '@/pages/HomePage/HeroSection';
+import { ViewAll } from '@/pages/HomePage/ViewAll';
 
 export const HomePage = () => {
   const { data: products, error, isLoading } = useGetProductsQuery();
@@ -41,16 +43,20 @@ export const HomePage = () => {
         <meta name="description" content="Home page for Dream Kicks" />
       </Helmet>
       <HeroSection />
-      <Container mt="xl">
-        <section className="mt-24">
+      <section className="mt-24 px-8">
+        <Container mt="xl">
           <SectionHeading order={2}>New Arrivals</SectionHeading>
           <ProductList products={products.slice(0, 8)} className="mt-12" />
-        </section>
-        <section className="mt-24">
+        </Container>
+      </section>
+      <section className="mt-24 px-8">
+        <Container mt="xl">
           <SectionHeading order={2}>Best Seller</SectionHeading>
           <ProductList products={products.slice(8, 12)} className="mt-12" />
-        </section>
-      </Container>
+        </Container>
+      </section>
+      <ViewAll />
+      <Features />
     </>
   );
 };
