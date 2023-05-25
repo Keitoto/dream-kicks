@@ -5,7 +5,7 @@ const products: Product[] = [
     prompt:
       '3D AI sneaker art with consistent composition. Utilize vibrant blue gemstone textures, sleek chrome accents, and translucent materials. Keep the sneaker centered, show the right side, and maintain a clean white background. Enhance depth with lighting and shading effects. Maintain a harmonious balance while highlighting the details of the gemstone textures. Ensure the composition remains consistent across different designs.',
     name: 'Blue Gemstone Fusion',
-    category: ['Stone', 'Fusion'],
+    category: ['Stone'],
     brand: 'GemTech',
     price: 199.99,
     description:
@@ -44,7 +44,7 @@ const products: Product[] = [
     prompt:
       '3D AI sneaker art with a consistent composition. Incorporate sleek silver carbon fiber textures, glossy black accents, and translucent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a futuristic look with the metallic and high-tech materials. Ensure consistency in composition while highlighting the unique qualities of the carbon fiber texture.',
     name: 'Silver Carbon Fiber',
-    category: ['Fiber', 'Metal'],
+    category: ['Metal'],
     brand: 'GemTech',
     price: 199.99,
     description:
@@ -70,7 +70,7 @@ const products: Product[] = [
     prompt:
       '3D AI sneaker art with a consistent composition. Incorporate a vibrant blue holographic texture, sleek silver metallic accents, and translucent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a futuristic and eye-catching look with the holographic texture and silver metallics.',
     name: 'Blue Holographic',
-    category: ['Future'],
+    category: ['Nature'],
     brand: 'NexTech',
     price: 179.99,
     description:
@@ -83,7 +83,7 @@ const products: Product[] = [
     prompt:
       '3D AI sneaker art with a consistent composition. Incorporate a sleek black leather texture, bold red accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a stylish and edgy look with the combination of black leather and vibrant red accents.',
     name: 'Black Leather Street',
-    category: ['Leather'],
+    category: ['Luxury'],
     brand: 'LuxuStep',
     price: 149.99,
     description:
@@ -135,7 +135,7 @@ const products: Product[] = [
     prompt:
       '3D AI sneaker art with a consistent composition. Incorporate a futuristic silver mesh texture, glossy black accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a cutting-edge and modern look with the combination of silver mesh texture and glossy black accents.',
     name: 'Silver Mesh',
-    category: ['Future'],
+    category: ['Metal'],
     brand: 'NexTech',
     price: 199.99,
     description:
@@ -200,7 +200,7 @@ const products: Product[] = [
     prompt:
       '3D AI sneaker art with a consistent composition. Incorporate a sleek black patent leather texture, metallic silver accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a sophisticated and polished look with the combination of black patent leather and metallic silver accents.',
     name: 'Black Patent Leather',
-    category: ['Leather'],
+    category: ['Luxury'],
     brand: 'LuxuStep',
     price: 189.99,
     description:
@@ -265,7 +265,7 @@ const products: Product[] = [
     prompt:
       '3D AI sneaker art with a consistent composition. Incorporate lush green moss as a unique material, complemented by sleek metallic accents and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a harmonious balance between nature and technology with the combination of moss and metallic accents.',
     name: 'Green Moss Fusion',
-    category: ['Nature', 'Fusion'],
+    category: ['Nature'],
     brand: 'EcoStride',
     price: 189.99,
     description:

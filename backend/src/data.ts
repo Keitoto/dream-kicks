@@ -6,8 +6,10 @@ import { Order } from './types/Order';
 
 export const products: Product[] = [
   {
+    prompt:
+      '3D AI sneaker art with consistent composition. Utilize vibrant blue gemstone textures, sleek chrome accents, and translucent materials. Keep the sneaker centered, show the right side, and maintain a clean white background. Enhance depth with lighting and shading effects. Maintain a harmonious balance while highlighting the details of the gemstone textures. Ensure the composition remains consistent across different designs.',
     name: 'Blue Gemstone Fusion',
-    category: ['Stone', 'Fusion'],
+    category: ['Stone'],
     brand: 'GemTech',
     price: 199.99,
     description:
@@ -17,6 +19,8 @@ export const products: Product[] = [
     numInStock: 6,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Experiment with a bold and fiery color palette, incorporating lava-like textures, matte black accents, and transparent elements. Keep the sneaker centered, showcase the right side, and use a clean white background. Employ lighting and shading techniques to enhance the three-dimensional appearance. Maintain a cohesive composition while highlighting the dynamic and energetic nature of the fiery elements.',
     name: 'Fiery Lava',
     category: ['Nature'],
     brand: 'EcoStride',
@@ -28,6 +32,8 @@ export const products: Product[] = [
     numInStock: 8,
   },
   {
+    prompt:
+      'Generate 3D AI sneaker art with consistent composition. Utilize vibrant blue gemstone textures, sleek chrome accents, and translucent materials. Keep the sneaker centered, show the right side, and maintain a clean white background. Enhance depth with lighting and shading effects. Maintain a harmonious balance while highlighting the details of the gemstone textures. Ensure the composition remains consistent across different designs.',
     name: 'Blue Gemstone',
     category: ['Stone'],
     brand: 'GemTech',
@@ -39,8 +45,10 @@ export const products: Product[] = [
     numInStock: 10,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate sleek silver carbon fiber textures, glossy black accents, and translucent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a futuristic look with the metallic and high-tech materials. Ensure consistency in composition while highlighting the unique qualities of the carbon fiber texture.',
     name: 'Silver Carbon Fiber',
-    category: ['Fiber', 'Metal'],
+    category: ['Metal'],
     brand: 'GemTech',
     price: 199.99,
     description:
@@ -50,6 +58,8 @@ export const products: Product[] = [
     numInStock: 15,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Explore a vibrant red velvet texture, golden metallic accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve an opulent and luxurious feel with the rich velvet texture and golden accents.',
     name: 'Red Velvet Luxury',
     category: ['Fabric', 'Luxury'],
     brand: 'LuxuStep',
@@ -61,8 +71,10 @@ export const products: Product[] = [
     numInStock: 10,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a vibrant blue holographic texture, sleek silver metallic accents, and translucent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a futuristic and eye-catching look with the holographic texture and silver metallics.',
     name: 'Blue Holographic',
-    category: ['Future'],
+    category: ['Nature'],
     brand: 'NexTech',
     price: 179.99,
     description:
@@ -72,8 +84,10 @@ export const products: Product[] = [
     numInStock: 8,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a sleek black leather texture, bold red accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a stylish and edgy look with the combination of black leather and vibrant red accents.',
     name: 'Black Leather Street',
-    category: ['Leather'],
+    category: ['Luxury'],
     brand: 'LuxuStep',
     price: 149.99,
     description:
@@ -83,6 +97,8 @@ export const products: Product[] = [
     numInStock: 12,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a vibrant green foliage texture, sleek metallic silver accents, and translucent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a nature-inspired and futuristic look with the combination of green foliage texture and metallic silver accents.',
     name: 'Green Foliage',
     category: ['Nature'],
     brand: 'EcoStride',
@@ -94,6 +110,8 @@ export const products: Product[] = [
     numInStock: 6,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a striking purple velvet texture, silver metallic accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a luxurious and sophisticated look with the combination of purple velvet and silver metallic accents.',
     name: 'Purple Velvet Luxury',
     category: ['Fabric', 'Luxury'],
     brand: 'LuxuStep',
@@ -105,6 +123,8 @@ export const products: Product[] = [
     numInStock: 4,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a sleek white fabric texture, metallic gold accents, and translucent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a clean and elegant look with the combination of white fabric texture and metallic gold accents.',
     name: 'White Fabric Gold Accent',
     category: ['Fabric', 'Metal'],
     brand: 'LuxuStep',
@@ -116,8 +136,10 @@ export const products: Product[] = [
     numInStock: 20,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a futuristic silver mesh texture, glossy black accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a cutting-edge and modern look with the combination of silver mesh texture and glossy black accents.',
     name: 'Silver Mesh',
-    category: ['Future'],
+    category: ['Metal'],
     brand: 'NexTech',
     price: 199.99,
     description:
@@ -127,6 +149,8 @@ export const products: Product[] = [
     numInStock: 18,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a vibrant orange neoprene texture, metallic silver accents, and translucent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve an energetic and sporty look with the combination of orange neoprene texture and metallic silver accents.',
     name: 'Orange Neoprene Sport',
     category: ['Sport', 'Fabric'],
     brand: 'SportWave',
@@ -138,6 +162,8 @@ export const products: Product[] = [
     numInStock: 9,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a sleek black fabric texture, metallic silver accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a versatile and stylish look with the combination of black fabric texture and metallic silver accents.',
     name: 'Black Fabric Silver Accent',
     category: ['Fabric', 'Metal'],
     brand: 'LuxuStep',
@@ -149,6 +175,8 @@ export const products: Product[] = [
     numInStock: 14,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a unique cork texture, metallic gold accents, and translucent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a natural and luxurious look with the combination of cork texture and metallic gold accents.',
     name: 'Cork Texture Luxury',
     category: ['Fabric', 'Luxury'],
     brand: 'LuxuStep',
@@ -160,6 +188,8 @@ export const products: Product[] = [
     numInStock: 5,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a vibrant yellow knit texture, sleek white accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a fresh and energetic look with the combination of yellow knit texture and white accents.',
     name: 'Yellow Knit Sport',
     category: ['Sport', 'Fabric'],
     brand: 'SportWave',
@@ -171,8 +201,10 @@ export const products: Product[] = [
     numInStock: 11,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a sleek black patent leather texture, metallic silver accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a sophisticated and polished look with the combination of black patent leather and metallic silver accents.',
     name: 'Black Patent Leather',
-    category: ['Leather'],
+    category: ['Luxury'],
     brand: 'LuxuStep',
     price: 189.99,
     description:
@@ -182,6 +214,8 @@ export const products: Product[] = [
     numInStock: 7,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a vibrant pink suede texture, metallic gold accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a glamorous and feminine look with the combination of pink suede texture and metallic gold accents.',
     name: 'Pink Suede Glam',
     category: ['Fabric', 'Luxury'],
     brand: 'LuxuStep',
@@ -193,6 +227,8 @@ export const products: Product[] = [
     numInStock: 3,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a sleek white ceramic texture, metallic silver accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a modern and minimalist look with the combination of white ceramic texture and metallic silver accents.',
     name: 'White Ceramic',
     category: ['Stone'],
     brand: 'GemTech',
@@ -204,6 +240,8 @@ export const products: Product[] = [
     numInStock: 16,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a vibrant turquoise fabric texture, metallic silver accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a fresh and stylish look with the combination of turquoise fabric texture and metallic silver accents.',
     name: 'Turquoise Fabric Sport',
     category: ['Sport', 'Fabric'],
     brand: 'SportWave',
@@ -215,6 +253,8 @@ export const products: Product[] = [
     numInStock: 13,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate a sleek black nylon texture, metallic silver accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a versatile and durable look with the combination of black nylon texture and metallic silver accents.',
     name: 'Black Nylon Sport',
     category: ['Sport', 'Fabric'],
     brand: 'SportWave',
@@ -226,8 +266,10 @@ export const products: Product[] = [
     numInStock: 17,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate lush green moss as a unique material, complemented by sleek metallic accents and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a harmonious balance between nature and technology with the combination of moss and metallic accents.',
     name: 'Green Moss Fusion',
-    category: ['Nature', 'Fusion'],
+    category: ['Nature'],
     brand: 'EcoStride',
     price: 189.99,
     description:
@@ -237,6 +279,8 @@ export const products: Product[] = [
     numInStock: 10,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate vibrant leaf patterns and textures, paired with earthy brown accents and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Employ lighting and shading techniques to enhance depth and realism. Embrace the beauty of nature with the leaf-inspired design.',
     name: 'Leaf Patterned Nature',
     category: ['Nature'],
     brand: 'EcoStride',
@@ -248,6 +292,8 @@ export const products: Product[] = [
     numInStock: 7,
   },
   {
+    prompt:
+      'Generate 3D AI sneaker art with a consistent composition. Incorporate intricate vine-like textures, paired with metallic gold accents and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Embrace the elegance of nature with the vine-inspired design.',
     name: 'Vine Textured Elegance',
     category: ['Nature'],
     brand: 'EcoStride',
@@ -259,6 +305,8 @@ export const products: Product[] = [
     numInStock: 5,
   },
   {
+    prompt:
+      '3D AI sneaker art with a consistent composition. Incorporate vibrant floral patterns and textures inspired by blooming flowers, paired with metallic silver accents and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Employ lighting and shading techniques to enhance depth and realism. Embrace the beauty of nature with the floral-inspired design.',
     name: 'Floral Bloom',
     category: ['Nature'],
     brand: 'EcoStride',
