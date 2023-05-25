@@ -133,7 +133,7 @@ export const products: Product[] = [
       'Elevate your style with these sleek white fabric sneakers featuring metallic gold accents. The clean white fabric texture, combined with the luxurious gold accents and translucent elements, creates a refined and fashionable design.',
     slug: 'white_fabric_gold_accent',
     image: 'white_fabric_gold_accent',
-    numInStock: 20,
+    numInStock: 0,
   },
   {
     prompt:
@@ -166,7 +166,7 @@ export const products: Product[] = [
       '3D AI sneaker art with a consistent composition. Incorporate a sleek black fabric texture, metallic silver accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Enhance the three-dimensional appearance with lighting and shading effects. Achieve a versatile and stylish look with the combination of black fabric texture and metallic silver accents.',
     name: 'Black Fabric Silver Accent',
     category: ['Fabric', 'Metal'],
-    brand: 'LuxuStep',
+    brand: 'NexTech',
     price: 179.99,
     description:
       'Add a touch of elegance to your outfit with these black fabric sneakers featuring metallic silver accents. The sleek black fabric texture, paired with the shiny silver accents and translucent elements, creates a versatile and fashionable design.',
@@ -185,7 +185,7 @@ export const products: Product[] = [
       'Make a statement with these luxury sneakers featuring a distinctive cork texture. The natural and textured cork, combined with metallic gold accents and translucent elements, creates a sophisticated and eco-friendly design.',
     slug: 'cork_texture_luxury',
     image: 'cork_texture_luxury',
-    numInStock: 5,
+    numInStock: 0,
   },
   {
     prompt:
@@ -205,7 +205,7 @@ export const products: Product[] = [
       '3D AI sneaker art with a consistent composition. Incorporate a sleek black patent leather texture, metallic silver accents, and transparent elements. Keep the sneaker centered, showcase the right side, and maintain a clean white background. Utilize lighting and shading techniques to enhance depth and realism. Achieve a sophisticated and polished look with the combination of black patent leather and metallic silver accents.',
     name: 'Black Patent Leather',
     category: ['Luxury'],
-    brand: 'LuxuStep',
+    brand: 'NexTech',
     price: 189.99,
     description:
       'Make a fashion statement with these black patent leather sneakers. The sleek black patent leather texture, paired with metallic silver accents and translucent elements, creates a sophisticated and polished design.',
@@ -237,7 +237,7 @@ export const products: Product[] = [
       'Elevate your style with these modern white ceramic sneakers. The sleek white ceramic texture, combined with metallic silver accents and translucent elements, creates a clean and minimalist design.',
     slug: 'white_ceramic',
     image: 'white_ceramic',
-    numInStock: 16,
+    numInStock: 0,
   },
   {
     prompt:
