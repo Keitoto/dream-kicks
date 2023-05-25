@@ -110,7 +110,7 @@ export const Footer = () => {
           </Flex>
         </Container>
       </footer>
-      <Box className="text-center bg-white p-3 text-xs">
+      <Box className="text-center bg-white p-4 text-sm">
         <Text c="gray.6">© 2021 Dream Kicks. All rights reserved.</Text>
       </Box>
     </>
