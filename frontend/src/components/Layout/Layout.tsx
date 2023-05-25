@@ -11,7 +11,7 @@ type Props = {
 export const Layout: FC<Props> = ({ children }) => {
   return (
     <AppShell header={<Header />} footer={<Footer />}>
-      <main>{children}</main>
+      {children}
     </AppShell>
   );
 };

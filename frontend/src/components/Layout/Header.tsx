@@ -23,7 +23,7 @@ export const Header = () => {
     window.location.href = '/signin';
   };
 
-  const { isLoading, mutateAsync: signInMutation } = useSignInMutation();
+  const { mutateAsync: signInMutation } = useSignInMutation();
 
   const handleSignIn = async (email: string, password: string) => {
     try {
