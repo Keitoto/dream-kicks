@@ -20,6 +20,7 @@ import {
   BrandPinterest,
 } from 'tabler-icons-react';
 
+import { getArrayFromProductValue } from '@/helpers/getArrayFromProductValue';
 import { useGetProductsQuery } from '@/hooks/productHooks';
 
 export const Footer = () => {
@@ -58,11 +59,7 @@ export const Footer = () => {
                   <Text>No category found</Text>
                 ) : (
                   <List listStyleType="none" c="gray.6" spacing="sm">
-                    {[
-                      ...new Set(
-                        products.flatMap((product) => product.category)
-                      ),
-                    ]
+                    {getArrayFromProductValue(products, 'category')
                       .sort()
                       .map((category) => (
                         <List.Item>{category}</List.Item>
@@ -78,11 +75,7 @@ export const Footer = () => {
                   <Text>No category found</Text>
                 ) : (
                   <List listStyleType="none" c="gray.6" spacing="sm">
-                    {[
-                      ...new Set(
-                        products.flatMap((product) => product.category)
-                      ),
-                    ]
+                    {getArrayFromProductValue(products, 'brand')
                       .sort()
                       .map((category) => (
                         <List.Item>{category}</List.Item>
@@ -108,7 +101,7 @@ export const Footer = () => {
                 Subscribe to our newsletter and get 10% off your first purchase
               </Text>
               <Group mt="md" spacing="sm">
-                <TextInput placeholder="Your email" className='w-full' />
+                <TextInput placeholder="Your email" className="w-full" />
                 <Button>Subscribe</Button>
               </Group>
             </Box>
