@@ -1,15 +1,15 @@
 import { Product } from '@/types/Product';
 
 type Filters = {
-  availability: string[];
-  category: string[];
-  brand: string[];
+  availability?: string[];
+  category?: string[];
+  brand?: string[];
 };
 export const filterProducts = (products: Product[], filters: Filters) => {
   let filteredProducts = products;
 
   // Filter by availability
-  if (filters.availability.length === 1) {
+  if (filters.availability && filters.availability.length === 1) {
     switch (filters.availability[0]) {
       case 'inStock':
         filteredProducts = filteredProducts.filter(
@@ -27,18 +27,16 @@ export const filterProducts = (products: Product[], filters: Filters) => {
   }
 
   // Filter by category
-  if (filters.category.length > 0) {
+  if (filters.category && filters.category.length > 0) {
     filteredProducts = filteredProducts.filter((product) =>
-      filters.category.some((category) =>
-        product.category.includes(category)
-      )
+      filters.category!.some((category) => product.category.includes(category))
     );
   }
 
   // Filter by brand
-  if (filters.brand.length > 0) {
+  if (filters.brand && filters.brand.length > 0) {
     filteredProducts = filteredProducts.filter((product) =>
-      filters.brand.includes(product.brand)
+      filters.brand!.includes(product.brand)
     );
   }
 
