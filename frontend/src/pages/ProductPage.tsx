@@ -54,9 +54,8 @@ export const ProductPage = () => {
     )
   );
 
-  const addToCartHandler = () => {
-    const quantity = Number(quantityRef.current?.value);
-    if (product.numInStock < quantity) {
+  const addToCartHandler = (quantity: number) => {
+    if (numInStock < quantity) {
       toast.error('Sorry. We do not have enough stock');
       return;
     }
