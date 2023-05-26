@@ -1,3 +1,4 @@
+import { useAppDispatch, useAppSelector } from '@/store';
 import {
   Container,
   Flex,
@@ -11,9 +12,9 @@ import {
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { CircleMinus, CirclePlus } from 'tabler-icons-react';
-import { useAppDispatch, useAppSelector } from '@/store';
 
 import MessageBox from '@/components/MessageBox';
+import { PageHeading } from '@/components/UI/PageHeading';
 import {
   addItemToCart,
   removeItemFromCart,
@@ -56,7 +57,7 @@ export const CartPage = () => {
         <meta name="description" content="Cart page for Dream Kicks" />
       </Helmet>
       <Container>
-        <Title order={1}>Shopping Cart</Title>
+        <PageHeading>Shopping Cart</PageHeading>
         <Grid>
           <Grid.Col span={8}>
             {cartItems.length === 0 ? (

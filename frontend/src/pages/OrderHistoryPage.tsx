@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LoadingBox from '@/components/LoadingBox';
 import MessageBox from '@/components/MessageBox';
 import { useGetUserOrdersQuery } from '@/hooks/orderHooks';
+import { PageHeading } from '@/components/UI/PageHeading';
 
 const OrderHistoryPage = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const OrderHistoryPage = () => {
         <title>Order History | Dream Kicks</title>
       </Helmet>
       <Container>
-        <Title order={1}>Order History</Title>
+        <PageHeading>Order History</PageHeading>
         <Table striped>
           <thead>
             <tr>

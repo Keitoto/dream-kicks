@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import { selectUserInfo, signIn } from '@/store/userSlice';
 
 import { useSignUpMutation } from '../hooks/userHooks';
+import { PageHeading } from '@/components/UI/PageHeading';
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ export const SignUpPage = () => {
         <meta name="description" content="Sign up to your account" />
       </Helmet>
       <Container size="400px">
-        <Title order={1}>Sign Up</Title>
+        <PageHeading>Sign Up</PageHeading>
         <form onSubmit={handleSubmit}>
           <TextInput
             label="Email"

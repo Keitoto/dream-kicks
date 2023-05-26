@@ -1,8 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
-
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { toast } from 'react-toastify';
+
+import { useAppDispatch, useAppSelector } from '@/store';
 import {
   Title,
   Container,
@@ -13,11 +11,14 @@ import {
   List,
   Divider,
 } from '@mantine/core';
+import { Helmet } from 'react-helmet-async';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { CheckoutSteps } from '@/components/CheckoutSteps';
 import { OrderSummary } from '@/components/OrderPreview/OrderSummary';
+import { PageHeading } from '@/components/UI/PageHeading';
 import { useCreateOrderMutation } from '@/hooks/orderHooks';
-import { useAppDispatch, useAppSelector } from '@/store';
 import { savePrices, selectCart, clearCart } from '@/store/cartSlice';
 import { selectUserInfo } from '@/store/userSlice';
 
@@ -67,7 +68,7 @@ export const PlaceOrderPage = () => {
         totalPrice: cart.totalPrice,
         user: userInfo!,
       });
-      if(!data.createdOrder) throw new Error('Order creation failed');
+      if (!data.createdOrder) throw new Error('Order creation failed');
       dispatch(clearCart());
       navigate(`/order/${data.createdOrder._id}`);
     } catch (error) {
@@ -90,7 +91,7 @@ export const PlaceOrderPage = () => {
       <CheckoutSteps step1 step2 step3 />
 
       <Container size="md" mt="xl">
-        <Title order={1}>Preview Order</Title>
+        <PageHeading>Preview Order</PageHeading>
         <Grid mt="md">
           <Grid.Col span={8}>
             <Card withBorder>

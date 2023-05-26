@@ -1,11 +1,12 @@
+import { useEffect, useState } from 'react';
+
+import { useAppDispatch, useAppSelector } from '@/store';
+import { Title, Button, Container, Radio } from '@mantine/core';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Title, Button, Container, Radio } from '@mantine/core';
-
 import { CheckoutSteps } from '@/components/CheckoutSteps';
-import { useAppDispatch, useAppSelector } from '@/store';
+import { PageHeading } from '@/components/UI/PageHeading';
 import {
   selectPaymentMethod,
   selectShippingAddress,
@@ -27,8 +28,9 @@ export const PaymentMethodPage = () => {
     }
   }, [shippingAddress, navigate]);
 
-  const [paymentMethod, setPaymentMethod] =
-    useState<PaymentMethod>(savedPaymentMethod || 'PayPal');
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(
+    savedPaymentMethod || 'PayPal'
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,7 +49,7 @@ export const PaymentMethodPage = () => {
       <CheckoutSteps step1 step2 />
 
       <Container size="400px">
-        <Title order={1}>Payment Method</Title>
+        <PageHeading>Payment Method</PageHeading>
         <form onSubmit={handleSubmit}>
           <Radio.Group
             value={paymentMethod}

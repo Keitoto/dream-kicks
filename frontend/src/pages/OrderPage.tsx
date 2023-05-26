@@ -1,8 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
-
 import { Fragment, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { toast } from 'react-toastify';
+
+import { useAppSelector } from '@/store';
 import {
   AspectRatio,
   Card,
@@ -14,22 +12,25 @@ import {
   Title,
   Button,
 } from '@mantine/core';
-
 import {
   PayPalButtons,
   PayPalButtonsComponentProps,
   SCRIPT_LOADING_STATE,
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js';
+import { Helmet } from 'react-helmet-async';
+import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import LoadingBox from '@/components/LoadingBox';
 import MessageBox from '@/components/MessageBox';
 import { OrderSummary } from '@/components/OrderPreview/OrderSummary';
+import { PageHeading } from '@/components/UI/PageHeading';
 import {
   useGetOrderDetailsByIdQuery,
   useGetPayPalClientIdQuery,
   usePayOrderMutation,
 } from '@/hooks/orderHooks';
-import { useAppSelector } from '@/store';
 import { selectUserInfo } from '@/store/userSlice';
 
 export const OrderPage = () => {
@@ -48,7 +49,7 @@ export const OrderPage = () => {
   const { isLoading: loadingPay, mutateAsync: payOrder } =
     usePayOrderMutation();
 
-  const testPayHandler = async() => {
+  const testPayHandler = async () => {
     await payOrder({ orderId: orderId! });
     refetch();
     toast.success('Order paid');
@@ -138,7 +139,7 @@ export const OrderPage = () => {
         <meta name="description" content="Order details page for Dream Kicks" />
       </Helmet>
       <Container>
-        <Title order={1}>Order {orderId}</Title>
+        <PageHeading>Order {orderId}</PageHeading>
         <Grid>
           <Grid.Col span={8}>
             <Card withBorder>
@@ -239,9 +240,7 @@ export const OrderPage = () => {
                   </MessageBox>
                 ) : (
                   <>
-                    <PayPalButtons
-                      {...payPalButtonTransactionProps}
-                     />
+                    <PayPalButtons {...payPalButtonTransactionProps} />
                     <Button onClick={testPayHandler}>Test Pay</Button>
                   </>
                 )}

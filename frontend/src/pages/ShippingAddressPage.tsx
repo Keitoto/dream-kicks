@@ -1,12 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+
+import { useAppDispatch, useAppSelector } from '@/store';
 import { Title, TextInput, Button, Container } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 
 import { CheckoutSteps } from '@/components/CheckoutSteps';
-import { useAppDispatch, useAppSelector } from '@/store';
+import { PageHeading } from '@/components/UI/PageHeading';
 import { selectShippingAddress, saveShippingAddress } from '@/store/cartSlice';
 import { selectUserInfo } from '@/store/userSlice';
 
@@ -47,12 +48,12 @@ export const ShippingAddressPage = () => {
   return (
     <>
       <Helmet>
-        <title>Sign In</title>
+        <title>Shipping Address</title>
         <meta name="description" content="Sign in to your account" />
       </Helmet>
       <CheckoutSteps step1 />
       <Container size="400px">
-        <Title order={1}>Sign In</Title>
+        <PageHeading>Shipping Address</PageHeading>
         <form onSubmit={handleSubmit}>
           <TextInput
             label="Full Name"
