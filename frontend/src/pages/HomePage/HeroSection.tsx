@@ -23,7 +23,7 @@ export const HeroSection = () => {
             <Text size="lg">
               <Balancer>
                 Step into the future of footwear with our extraordinary
-                collection of 3D AI art sneakers.
+                collection of imaginary sneakers.
               </Balancer>
             </Text>
             <Link to="/products">
