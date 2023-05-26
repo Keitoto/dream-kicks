@@ -1,25 +1,29 @@
-import { useParams } from 'react-router-dom';
-
 import { useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { toast } from 'react-toastify';
+
+import { useAppDispatch, useAppSelector } from '@/store';
 import {
   Anchor,
   Badge,
-  Button,
   Container,
   Grid,
   Image,
   Breadcrumbs,
   Text,
   Title,
+  List,
 } from '@mantine/core';
+import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import { ButtonWithCounter } from '@/components/ButtonWithCounter';
+import { RelatedProducts } from '@/components/Product/RelatedProducts';
+import { SectionHeading } from '@/components/UI/SectionHeading';
 import { useGetProductDetailsBySlugQuery } from '@/hooks/productHooks';
-import { useAppDispatch } from '@/store';
-import { addItemToCart } from '@/store/cartSlice';
+import { addItemToCart, selectCart } from '@/store/cartSlice';
 
 export const ProductPage = () => {
+  // react-router
   const { slug } = useParams<{ slug: string }>();
   if (!slug) throw new Error('No slug provided');
 
@@ -36,23 +40,29 @@ export const ProductPage = () => {
     cart.cartItems.find((item) => item.slug === slug)?.quantity || 0;
   const dispatch = useAppDispatch();
 
-  const quantityRef = useRef<HTMLSelectElement>(null);
-
+  // loading state
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Something went wrong</div>;
   if (!product) return <div>Product not found</div>;
 
+  // deconstruct product
+  const { numInStock, name, description, price, brand, category, _id, image } =
+    product;
+
   const addMax = numInStock - currentNumInCart;
   const hasStock = numInStock > 0;
+
   const bread = [
     { href: '/', title: 'Home' },
     { href: '/products', title: 'Products' },
-    { href: `products/${product.slug}`, title: product.name },
+    { href: `products/${slug}`, title: name },
   ].map((item, index, arr) =>
     index === arr.length - 1 ? (
-      <Text key={index}  size='sm'>{item.title}</Text>
+      <Text key={index} size="sm">
+        {item.title}
+      </Text>
     ) : (
-      <Anchor href={item.href} key={index}  size='sm'>
+      <Anchor href={item.href} key={index} size="sm">
         {item.title}
       </Anchor>
     )
@@ -73,22 +83,29 @@ export const ProductPage = () => {
         <title>Dream Kicks</title>
         <meta name="description" content="Home page for Dream Kicks" />
       </Helmet>
-      <Breadcrumbs p="lg" bg="gray.1">
-        {bread}
-      </Breadcrumbs>
-      <Container mt='xl'>
-        <Grid gutter="xl">
-          <Grid.Col span={6}>
-            <Image src={`/products/${product.image}.png`} alt={product.name} />
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Title order={1} size="md">
-              {product.name}
-            </Title>
-            <Text size="xl">${product.price}</Text>
-            <Text c="gray" size="sm" mt="lg">
-              {product.description}
-            </Text>
+      <section className="px-8 py-6 bg-bg">
+        <Container size="xl">
+          <Breadcrumbs>{bread}</Breadcrumbs>
+        </Container>
+      </section>
+
+      <section className="px-4 py-8">
+        <Container mt="xl">
+          <Grid gutter="xl">
+            {/* left side */}
+            <Grid.Col span={6} pt={0}>
+              <Image src={`/products/${image}.png`} alt={name} />
+            </Grid.Col>
+
+            {/* Right side */}
+            <Grid.Col span={6} pt={0}>
+              <Title order={1} size="md">
+                {name}
+              </Title>
+              <Text size="xl">${price}</Text>
+              <Text c="gray" size="sm" mt="lg">
+                {description}
+              </Text>
 
               <div className="my-8">
                 {currentNumInCart > 0 && (
@@ -102,6 +119,7 @@ export const ProductPage = () => {
                   isAvailable={hasStock}
                 />
               </div>
+
               <List listStyleType="none" size="sm" c="gray" spacing="xs">
                 <List.Item>
                   <span className="">Brand : </span>
@@ -120,13 +138,14 @@ export const ProductPage = () => {
                   </span>
                 </List.Item>
               </List>
-          </Grid.Col>
-        </Grid>
+            </Grid.Col>
+          </Grid>
           <section className='mt-32'>
             <SectionHeading order={2}>You may also like</SectionHeading>
             <RelatedProducts _id={_id} brand={brand} category={category} />
           </section>
-      </Container>
+        </Container>
+      </section>
     </>
   );
 };
