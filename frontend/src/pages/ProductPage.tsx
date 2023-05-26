@@ -122,6 +122,10 @@ export const ProductPage = () => {
               </List>
           </Grid.Col>
         </Grid>
+          <section className='mt-32'>
+            <SectionHeading order={2}>You may also like</SectionHeading>
+            <RelatedProducts _id={_id} brand={brand} category={category} />
+          </section>
       </Container>
     </>
   );
