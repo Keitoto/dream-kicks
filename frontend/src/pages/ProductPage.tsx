@@ -39,7 +39,8 @@ export const ProductPage = () => {
   if (error) return <div>Something went wrong</div>;
   if (!product) return <div>Product not found</div>;
 
-  const hasStock = product.numInStock > 0;
+  const addMax = numInStock - currentNumInCart;
+  const hasStock = numInStock > 0;
   const bread = [
     { href: '/', title: 'Home' },
     { href: '/products', title: 'Products' },
@@ -97,34 +98,12 @@ export const ProductPage = () => {
                     Out of Stock
                   </Badge>
                 )}
-              </Grid.Col>
-            </Grid>
-            <Grid mt="sm">
-              <Grid.Col span={2}>Qty:</Grid.Col>
-              <Grid.Col span={10}>
-                {hasStock ? (
-                  <select ref={quantityRef}>
-                    {[...Array(product.numInStock).keys()].map((x) => (
-                      <option key={x + 1} value={x + 1}>
-                        {x + 1}
-                      </option>
-                    ))}
-                  </select>
-                ) : (
-                  <select disabled>
-                    <option>0</option>
-                  </select>
-                )}
-              </Grid.Col>
-            </Grid>
-            <Button
-              type="button"
-              onClick={addToCartHandler}
-              disabled={!hasStock}
-              mt="sm"
-            >
-              Add to Cart
-            </Button>
+                <ButtonWithCounter
+                  max={addMax}
+                  handleSubmit={addToCartHandler}
+                  isAvailable={hasStock}
+                />
+              </div>
           </Grid.Col>
         </Grid>
       </Container>
