@@ -102,6 +102,24 @@ export const ProductPage = () => {
                   isAvailable={hasStock}
                 />
               </div>
+              <List listStyleType="none" size="sm" c="gray" spacing="xs">
+                <List.Item>
+                  <span className="">Brand : </span>
+                  <span className="text-default">{brand}</span>
+                </List.Item>
+                <List.Item>
+                  <span className="">Category : </span>
+                  <span className="text-default">
+                    {category.map((cat) => `${cat}, `)}
+                  </span>
+                </List.Item>
+                <List.Item>
+                  <span className="">Status : </span>
+                  <span className="text-default">
+                    {numInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                  </span>
+                </List.Item>
+              </List>
           </Grid.Col>
         </Grid>
       </Container>
