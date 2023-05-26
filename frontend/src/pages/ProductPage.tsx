@@ -30,7 +30,10 @@ export const ProductPage = () => {
     isLoading,
   } = useGetProductDetailsBySlugQuery(slug);
 
-  // get redux dispatch
+  // get redux state
+  const cart = useAppSelector(selectCart);
+  const currentNumInCart =
+    cart.cartItems.find((item) => item.slug === slug)?.quantity || 0;
   const dispatch = useAppDispatch();
 
   const quantityRef = useRef<HTMLSelectElement>(null);
@@ -86,16 +89,11 @@ export const ProductPage = () => {
             <Text c="gray" size="sm" mt="lg">
               {product.description}
             </Text>
-            <Grid mt="lg">
-              <Grid.Col span={2}>Status:</Grid.Col>
-              <Grid.Col span={10}>
-                {product.numInStock > 0 ? (
-                  <Badge color="green" radius="sm" variant="filled">
-                    In Stock
-                  </Badge>
-                ) : (
-                  <Badge color="red" radius="sm" variant="filled">
-                    Out of Stock
+
+              <div className="my-8">
+                {currentNumInCart > 0 && (
+                  <Badge color="blue" variant="light" className="mb-2">
+                    This product is currently in your cart : {currentNumInCart}
                   </Badge>
                 )}
                 <ButtonWithCounter
