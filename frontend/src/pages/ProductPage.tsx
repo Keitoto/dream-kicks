@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
   Anchor,
